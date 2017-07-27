@@ -1,7 +1,11 @@
+project 'Example/SwiftyKit'
+workspace 'SwiftyKit'
 use_frameworks!
 
+platform :ios, '10.0'
+
 target 'SwiftyKit_Example' do
-  pod 'SwiftyKit', :path => '../'
+  pod 'SwiftyKit', :path => '.'
 
   target 'SwiftyKit_Tests' do
     inherit! :search_paths

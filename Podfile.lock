@@ -19,19 +19,19 @@ DEPENDENCIES:
   - Nimble (~> 5.1.1)
   - Nimble-Snapshots
   - Quick (~> 1.0.0)
-  - SwiftyKit (from `../`)
+  - SwiftyKit (from `.`)
 
 EXTERNAL SOURCES:
   SwiftyKit:
-    :path: ../
+    :path: .
 
 SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
   Nimble-Snapshots: e743439f26c2fa99d8f7e0d7c01c99bcb40aa6f2
   Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
-  SwiftyKit: bd3e7a45e086bcb6224345b628acfeeb1938964f
+  SwiftyKit: 283bcfb877aceebfdc2379806ad1644dbf30477d
 
-PODFILE CHECKSUM: 66dcd66817995e4c7d1b69cf1c3b6d0833a72164
+PODFILE CHECKSUM: cae8ba7e6b1f8c72428bd469ae91ded1864cb9eb
 
 COCOAPODS: 1.2.1
