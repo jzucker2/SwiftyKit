@@ -21,6 +21,7 @@ class WeakObjectSetTestCase: XCTestCase {
 
     var testSet: WeakObjectSet<Test> = WeakObjectSet()
     var firstTestObject: Test? = Test(value: 0)
+    var secondTestObject: Test? = Test(value: 1)
     
     func addObjectActivity(with object: Test?) {
         XCTContext.runActivity(named: "Add Object") { (activity) in
@@ -38,6 +39,7 @@ class WeakObjectSetTestCase: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        XCTAssertNotEqual(firstTestObject!, secondTestObject!)
     }
     
     override func tearDown() {
@@ -59,6 +61,7 @@ class WeakObjectSetTestCase: XCTestCase {
         XCTAssertFalse(testSet.contains(object: firstTestObject))
         addObjectActivity(with: firstTestObject)
         XCTAssertTrue(testSet.contains(object: firstTestObject))
+        XCTAssertFalse(testSet.contains(object: secondTestObject))
     }
     
     func testRemoveObject() {
@@ -66,6 +69,17 @@ class WeakObjectSetTestCase: XCTestCase {
         testSet.removeObject(object: firstTestObject!)
         XCTAssertEqual(testSet.count, 0)
         XCTAssertFalse(testSet.contains(object: firstTestObject))
+    }
+    
+    func testAddMultipleObjects() {
+        XCTAssertNotNil(testSet)
+        XCTAssertEqual(testSet.count, 0)
+        XCTAssertFalse(testSet.contains(object: firstTestObject))
+        XCTAssertFalse(testSet.contains(object: secondTestObject))
+        self.testSet.addObjects(objects: [firstTestObject!, secondTestObject!])
+        XCTAssertEqual(testSet.count, 2)
+        XCTAssertTrue(testSet.contains(object: firstTestObject))
+        XCTAssertTrue(testSet.contains(object: secondTestObject))
     }
     
     func testHoldWeakReferenceToObjects() {
