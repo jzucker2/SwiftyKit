@@ -1,12 +1,10 @@
 //
 //  UserInterfaceExtensions.swift
-//  Pods
+//  PomodoroTurntableApp
 //
-//  Created by Jordan Zucker on 7/27/17.
+//  Created by Jordan Zucker on 7/9/17.
+//  Copyright © 2017 Stanera. All rights reserved.
 //
-//
-
-import UIKit
 
 import Foundation
 import UIKit
@@ -72,7 +70,7 @@ extension UIView {
 }
 
 public extension UINavigationItem {
-    func setPrompt(with message: String, for duration: Double = NavigationBarPromptDefaultDuration) {
+    public func setPrompt(with message: String, for duration: Double = NavigationBarPromptDefaultDuration) {
         assert(duration > 0.0)
         assert(duration < 10.0)
         DispatchQueue.main.async {

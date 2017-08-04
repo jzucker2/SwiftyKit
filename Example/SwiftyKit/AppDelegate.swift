@@ -13,9 +13,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let bounds = UIScreen.main.bounds
+        let window = UIWindow(frame: bounds)
+        self.window = window
+        let tabBarController = UITabBarController()
+        let plainNavController = UINavigationController(rootViewController: PlainViewController())
+        let errorNavController = UINavigationController(rootViewController: ErrorViewController())
+        errorNavController.title = "Errors"
+        tabBarController.viewControllers = [plainNavController, errorNavController]
+        self.window?.rootViewController = tabBarController
+        self.window?.makeKeyAndVisible()
         return true
     }
 
