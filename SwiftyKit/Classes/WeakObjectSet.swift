@@ -16,8 +16,6 @@ class WeakObject<T: AnyObject>: Equatable, Hashable {
     }
     
     var hashValue: Int {
-        //        Unmanaged.un
-        //        if let object = self.object { return unsafeAddressOf(object).hashValue }
         if let object = self.object { return Unmanaged.passUnretained(object).toOpaque().hashValue }
         else { return 0 }
     }
