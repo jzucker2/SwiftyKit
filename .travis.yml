@@ -20,9 +20,33 @@ language: objective-c
 # - set -o pipefail && xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit_Tests -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.0' | xcpretty
 # - set -o pipefail && xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit-Example -destination 'platform=iOS Simulator,name=iPhone SE,OS=11.0' | xcpretty
 # - set -o pipefail && xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit_Tests -destination 'platform=iOS Simulator,name=iPhone SE,OS=11.0' | xcpretty
+# script:
+# - set -o pipefail && xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit-Example -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.0' | xcpretty
+# - set -o pipefail && xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit_Tests -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.0' | xcpretty
+# - set -o pipefail && xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit-Example -destination 'platform=iOS Simulator,name=iPhone SE,OS=11.0' | xcpretty
+# - set -o pipefail && xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit_Tests -destination 'platform=iOS Simulator,name=iPhone SE,OS=11.0' | xcpretty
+# - pod lib lint
+cache:
+  - bundler
+  - cocoapods
+
+env:
+    global:
+        - LC_CTYPE=en_US.UTF-8
+        - LANG=en_US.UTF-8
+
+matrix:
+  include:
+    - env: SCHEME='SwiftyKit-Example' DESTINATION='platform=iOS Simulator,name=iPhone SE,OS=10.0'
+    - env: SCHEME='SwiftyKit_Tests' DESTINATION='platform=iOS Simulator,name=iPhone SE,OS=10.0'
+    - env: SCHEME='SwiftyKit-Example' DESTINATION='platform=iOS Simulator,name=iPhone SE,OS=11.0'
+    - env: SCHEME='SwiftyKit_Tests' DESTINATION='platform=iOS Simulator,name=iPhone SE,OS=11.0'
+    # - env: NAME="[ObjC] iOS 9.3 64bit" FASTLANE_LANE=test_ios FASTLANE_ENV=ios93x64 PN_TEST_LANG="ObjC"
+    # - env: NAME="[ObjC] iOS 10.2 64bit" FASTLANE_LANE=test_ios FASTLANE_ENV=ios102x64 PN_TEST_LANG="ObjC"
+    # - env: NAME="[ObjC] tvOS 9.2" FASTLANE_LANE=test_tvos FASTLANE_ENV=tvos92 PN_TEST_LANG="ObjC"
+    # - env: NAME="[ObjC] tvOS 10.1" FASTLANE_LANE=test_tvos FASTLANE_ENV=tvos101 PN_TEST_LANG="ObjC"
+    # - env: NAME="[ObjC] macOS" FASTLANE_LANE=test_macos FASTLANE_ENV=macos PN_TEST_LANG="ObjC"
+
 script:
-- set -o pipefail && xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit-Example -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.0' | xcpretty
-- set -o pipefail && xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit_Tests -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.0' | xcpretty
-- set -o pipefail && xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit-Example -destination 'platform=iOS Simulator,name=iPhone SE,OS=11.0' | xcpretty
-- set -o pipefail && xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit_Tests -destination 'platform=iOS Simulator,name=iPhone SE,OS=11.0' | xcpretty
-- pod lib lint
+  - set -o pipefail
+  - xcodebuild test -workspace SwiftyKit.xcworkspace -scheme $SCHEME -destination $DESTINATION | xcpretty
