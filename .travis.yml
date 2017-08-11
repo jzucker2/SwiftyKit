@@ -48,6 +48,8 @@ matrix:
     # - env: NAME="[ObjC] macOS" FASTLANE_LANE=test_macos FASTLANE_ENV=macos PN_TEST_LANG="ObjC"
 
 script:
+  - echo $RUN_SCHEME
+  - echo $RUN_DESTINATION
   - set -o pipefail
   - xcodebuild test -workspace SwiftyKit.xcworkspace -scheme $RUN_SCHEME -destination $RUN_DESTINATION | xcpretty
   - pod lib lint
