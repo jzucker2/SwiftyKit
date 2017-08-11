@@ -37,10 +37,10 @@ env:
 
 matrix:
   include:
-    - env: RUN_SCHEME="SwiftyKit-Example" RUN_DESTINATION="platform='iOS Simulator',name='iPhone SE',OS=10.0"
-    - env: RUN_SCHEME="SwiftyKit_Tests" RUN_DESTINATION="platform='iOS Simulator',name='iPhone SE',OS=10.0"
-    - env: RUN_SCHEME="SwiftyKit-Example" RUN_DESTINATION="platform='iOS Simulator',name='iPhone SE',OS=11.0"
-    - env: RUN_SCHEME="SwiftyKit_Tests" RUN_DESTINATION="platform='iOS Simulator',name='iPhone SE',OS=11.0"
+    - env: RUN_SCHEME="SwiftyKit-Example" RUN_DESTINATION="'platform=\'iOS Simulator\',name=\'iPhone SE\',OS=10.0'"
+    - env: RUN_SCHEME="SwiftyKit_Tests" RUN_DESTINATION="'platform=\'iOS Simulator\',name=\'iPhone SE\',OS=10.0'"
+    - env: RUN_SCHEME="SwiftyKit-Example" RUN_DESTINATION="'platform=\'iOS Simulator\',name=\'iPhone SE\',OS=11.0'"
+    - env: RUN_SCHEME="SwiftyKit_Tests" RUN_DESTINATION="'platform=\'iOS Simulator\',name=\'iPhone SE\',OS=11.0'"
     # - env: NAME="[ObjC] iOS 9.3 64bit" FASTLANE_LANE=test_ios FASTLANE_ENV=ios93x64 PN_TEST_LANG="ObjC"
     # - env: NAME="[ObjC] iOS 10.2 64bit" FASTLANE_LANE=test_ios FASTLANE_ENV=ios102x64 PN_TEST_LANG="ObjC"
     # - env: NAME="[ObjC] tvOS 9.2" FASTLANE_LANE=test_tvos FASTLANE_ENV=tvos92 PN_TEST_LANG="ObjC"
