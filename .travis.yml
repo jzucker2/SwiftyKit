@@ -39,6 +39,7 @@ matrix:
   include:
     - env: RUN_SCHEME="SwiftyKit-Example"
     - env: RUN_SCHEME="SwiftyKit_Tests"
+    - env: RUN_SCHEME="SwiftyKit_Networking_Tests"
     # - env: RUN_SCHEME="SwiftyKit-Example" RUN_DESTINATION="platform=iOS Simulator,name=iPhone SE,OS=10.0"
     # - env: RUN_SCHEME="SwiftyKit_Tests" RUN_DESTINATION="platform='iOS Simulator',name='iPhone\ SE',OS=10.0"
     # - env: RUN_SCHEME="SwiftyKit-Example" RUN_DESTINATION="platform='iOS Simulator',name='iPhone\ SE',OS=11.0"
