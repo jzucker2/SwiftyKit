@@ -280,16 +280,18 @@
 				TargetAttributes = {
 					17DAEC531F31706D00E16EF0 = {
 						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = BSKYS9EZN8;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = BSKYS9EZN8;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = BSKYS9EZN8;
 						LastSwiftMigration = 0900;
-						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
 			};
@@ -510,6 +512,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = BSKYS9EZN8;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = SwiftyKit_ExampleUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -532,6 +535,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = BSKYS9EZN8;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = SwiftyKit_ExampleUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -652,6 +656,7 @@
 			baseConfigurationReference = 5AAE726E523F9F9D1993FE09 /* Pods-SwiftyKit_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = BSKYS9EZN8;
 				INFOPLIST_FILE = SwiftyKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -668,6 +673,7 @@
 			baseConfigurationReference = 15701FDFB91859C27AC2E082 /* Pods-SwiftyKit_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = BSKYS9EZN8;
 				INFOPLIST_FILE = SwiftyKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -683,6 +689,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 441DEAAEB6F9F6A267BD50BA /* Pods-SwiftyKit_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = BSKYS9EZN8;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -700,6 +707,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8313F9D60B404EC2BFD920D1 /* Pods-SwiftyKit_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = BSKYS9EZN8;
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";

@@ -64,19 +64,38 @@ class ErrorViewControllerTestCase: XCTestCase {
         
         let errorsNavigationBar = app.navigationBars["Errors"]
         XCTAssertTrue(errorsNavigationBar.exists)
-        XCTAssertTrue(errorsNavigationBar.staticTexts["Errors"].exists)
+        var errorsNavBarTitleAssertion: XCUIElement
+        var testPromptAssertion: XCUIElement
+        if #available(iOS 11.0, *) {
+            errorsNavBarTitleAssertion = errorsNavigationBar.otherElements["Errors"]
+            testPromptAssertion = errorsNavigationBar.staticTexts["Test"]
+        } else {
+            errorsNavBarTitleAssertion = errorsNavigationBar.staticTexts["Errors"]
+            testPromptAssertion = errorsNavigationBar.otherElements["Test"]
+        }
+        XCTAssertTrue(errorsNavBarTitleAssertion.exists)
         
         // Generate query for expected test prompt first
-        let testPrompt = errorsNavigationBar.otherElements["Test"]
-        
         app.buttons["Navigation Prompt Error"].tap()
         
         
-        testPrompt.waitForExistence(timeout: 3)
-        XCTAssertTrue(testPrompt.exists)
+        testPromptAssertion.waitForExistence(timeout: 3)
+        XCTAssertTrue(testPromptAssertion.exists)
         
         sleep(3)
-        XCTAssertFalse(testPrompt.exists)
+        XCTAssertFalse(testPromptAssertion.exists)
+//        XCUIApplication().navigationBars["Errors"].otherElements["Errors"].tap()
+        
+//        let app = XCUIApplication()
+//        app.tabBars.buttons["Errors"].tap()
+//        
+//        let navigationPromptErrorButton = app.buttons["Navigation Prompt Error"]
+//        navigationPromptErrorButton.tap()
+//
+//        let errorsNavigationBar = app.navigationBars["Errors"]
+//        errorsNavigationBar.otherElements["Errors"].tap()
+//        navigationPromptErrorButton.tap()
+        
     }
     
 }
