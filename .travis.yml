@@ -53,10 +53,11 @@ matrix:
     # - env: xcodebuild test -workspace SwiftyKit.xcworkspace -scheme $RUN_SCHEME -destination '$"{platform=RUN_PLATFORM,name=RUN_DEVICE_NAME,OS=RUN_OS}"' | xcpretty
     # - env: RUN_SCHEME="SwiftyKit-Example" RUN_PLATFORM="\"iOS Simulator\"" RUN_DEVICE_NAME='iPhone 7' RUN_OS=10.0
     # - env: xcodebuild test -workspace SwiftyKit.xcworkspace -scheme $RUN_SCHEME -destination name=$RUN_DEVICE_NAME,platform=$RUN_PLATFORM,OS=$RUN_OS | xcpretty
+    # xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit-Example -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.0'
 
 script:
   - echo $RUN_SCHEME
   - echo $RUN_DESTINATION
   - set -o pipefail
-  - xcodebuild test -workspace SwiftyKit.xcworkspace -scheme $RUN_SCHEME -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3' -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.0' | xcpretty
+  - xcodebuild test -workspace SwiftyKit.xcworkspace -scheme $RUN_SCHEME -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3.1' -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.0' | xcpretty
   - pod lib lint
