@@ -1,14 +1,15 @@
 //
-//  SwiftyKit_Networking_Tests.swift
-//  SwiftyKit_Networking_Tests
+//  NetworkingTestCase.swift
+//  NetworkingTestCase
 //
 //  Created by Jordan Zucker on 8/21/17.
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
 import XCTest
+@testable import SwiftyKit
 
-class SwiftyKit_Networking_Tests: XCTestCase {
+class NetworkingTestCase: XCTestCase {
     
     override func setUp() {
         super.setUp()

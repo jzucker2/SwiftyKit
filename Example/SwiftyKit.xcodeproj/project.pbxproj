@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		17BFC15D1F4B9ABA00998351 /* SwiftyKit_Networking_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BFC15C1F4B9ABA00998351 /* SwiftyKit_Networking_Tests.swift */; };
+		17BFC15D1F4B9ABA00998351 /* NetworkingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BFC15C1F4B9ABA00998351 /* NetworkingTestCase.swift */; };
 		17DAEC4D1F3163D500E16EF0 /* PlainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DAEC4C1F3163D500E16EF0 /* PlainViewController.swift */; };
 		17DAEC5F1F31709700E16EF0 /* PlainViewControllerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DAEC5E1F31709700E16EF0 /* PlainViewControllerTestCase.swift */; };
 		17DAEC611F3171AA00E16EF0 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DAEC601F3171AA00E16EF0 /* ErrorViewController.swift */; };
@@ -54,7 +54,7 @@
 		15701FDFB91859C27AC2E082 /* Pods-SwiftyKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyKit_Example.release.xcconfig"; path = "../Pods/Target Support Files/Pods-SwiftyKit_Example/Pods-SwiftyKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		16D74E51E7478F248FB48C4A /* Pods_SwiftyKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17BFC15A1F4B9ABA00998351 /* SwiftyKit_Networking_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyKit_Networking_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		17BFC15C1F4B9ABA00998351 /* SwiftyKit_Networking_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyKit_Networking_Tests.swift; sourceTree = "<group>"; };
+		17BFC15C1F4B9ABA00998351 /* NetworkingTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTestCase.swift; sourceTree = "<group>"; };
 		17BFC15E1F4B9ABA00998351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17DAEC4C1F3163D500E16EF0 /* PlainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainViewController.swift; sourceTree = "<group>"; };
 		17DAEC541F31706D00E16EF0 /* SwiftyKit_ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyKit_ExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,7 +125,7 @@
 		17BFC15B1F4B9ABA00998351 /* SwiftyKit_Networking_Tests */ = {
 			isa = PBXGroup;
 			children = (
-				17BFC15C1F4B9ABA00998351 /* SwiftyKit_Networking_Tests.swift */,
+				17BFC15C1F4B9ABA00998351 /* NetworkingTestCase.swift */,
 				17BFC15E1F4B9ABA00998351 /* Info.plist */,
 			);
 			path = SwiftyKit_Networking_Tests;
@@ -521,10 +521,12 @@
 			inputPaths = (
 				"${SRCROOT}/../Pods/Target Support Files/Pods-SwiftyKit_Networking_Tests/Pods-SwiftyKit_Networking_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SwiftyKit/SwiftyKit.framework",
+				"${BUILT_PRODUCTS_DIR}/DVR/DVR.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DVR.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -574,7 +576,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17BFC15D1F4B9ABA00998351 /* SwiftyKit_Networking_Tests.swift in Sources */,
+				17BFC15D1F4B9ABA00998351 /* NetworkingTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
