@@ -9,7 +9,7 @@
 import Foundation
 
 // from https://stackoverflow.com/questions/24127587/how-do-i-declare-an-array-of-weak-references-in-swift
-class WeakObject<T: AnyObject>: Equatable, Hashable {
+public class WeakObject<T: AnyObject>: Equatable, Hashable {
     weak var object: T?
     init(object: T) {
         self.object = object
@@ -21,12 +21,12 @@ class WeakObject<T: AnyObject>: Equatable, Hashable {
     }
 }
 
-func == <T> (lhs: WeakObject<T>, rhs: WeakObject<T>) -> Bool {
+public func == <T> (lhs: WeakObject<T>, rhs: WeakObject<T>) -> Bool {
     return lhs.object === rhs.object
 }
 
 
-class WeakObjectSet<T: AnyObject> {
+public class WeakObjectSet<T: AnyObject> {
     var objects: Set<WeakObject<T>>
     
     init() {
