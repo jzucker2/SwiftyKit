@@ -79,7 +79,7 @@ class ErrorViewControllerTestCase: XCTestCase {
         app.buttons["Navigation Prompt Error"].tap()
         
         
-        testPromptAssertion.waitForExistence(timeout: 3)
+        let _ = testPromptAssertion.waitForExistence(timeout: 3)
         XCTAssertTrue(testPromptAssertion.exists)
         
         sleep(3)
