@@ -115,18 +115,18 @@ class ErrorViewController: UIViewController {
         }
     }
     
-    @objc func navigationPromptButtonPressed(sender: UIButton) {
+    @objc func navigationPromptShortcutShowButtonPressed(sender: UIButton) {
         do {
             try throwError(of: .promptError)
         } catch let promptError as PromptError {
             //            navigationItem.setPrompt(with: promptError)
-            show(prompt: promptError)
+            show(presentable: <#T##PresentableError#>)
         } catch {
             fatalError(error.localizedDescription)
         }
     }
     
-    @objc func alertControllerButtonPressed(sender: UIButton) {
+    @objc func alertControllerShortcutShowButtonPressed(sender: UIButton) {
         do {
             try throwError(of: .alertControllerError)
         } catch let alertControllerError as AlertControllerError {
