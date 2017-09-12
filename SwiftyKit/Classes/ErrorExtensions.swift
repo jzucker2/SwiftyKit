@@ -8,13 +8,17 @@
 
 import UIKit
 
-public protocol AlertControllerError: Error {
+public protocol PresentableError: Error {
+    
+}
+
+public protocol AlertControllerError: PresentableError {
     /// Title for the UIAlertController
     var alertTitle: String { get }
     var alertMessage: String { get }
 }
 
-public protocol PromptError: Error {
+public protocol PromptError: PresentableError {
     var prompt: String { get }
 }
 
@@ -49,6 +53,17 @@ public extension UIViewController {
         DispatchQueue.main.async {
             let alertController = UIAlertController.alertController(error: error, handler: handler)
             self.present(alertController, animated: true)
+        }
+    }
+    
+    func show(presentable error: PresentableError) {
+        switch error {
+        case let promptError as PromptError:
+            show(prompt: promptError)
+        case let alertControllerError as AlertControllerError:
+            show(alertController: alertControllerError)
+        default:
+            print("Encountered other type of error: \(error.localizedDescription)")
         }
     }
     

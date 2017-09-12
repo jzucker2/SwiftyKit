@@ -1,6 +1,6 @@
 PODS:
   - DVR (1.0.1)
-  - SwiftyKit (0.2.0)
+  - SwiftyKit (0.2.1)
 
 DEPENDENCIES:
   - DVR
@@ -12,7 +12,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   DVR: 48f5f24790d12eddaba28e6d279c11e11e4bc1fb
-  SwiftyKit: 5cc5915b4f9b2e43d7936e09f7feaabf42e113f3
+  SwiftyKit: f5f94360388a377a969eb099c2fc6e51fdf7dbdf
 
 PODFILE CHECKSUM: 9f100aadae0d8ee260f16936088c2445fde7b871
 
