@@ -30,9 +30,22 @@ class WeakObjectSetTestCase: XCTestCase {
                 XCTFail("Expected object")
                 return
             }
-            XCTAssertEqual(testSet.count, 0)
+            let originalCount = testSet.count
             self.testSet.addObject(object: actualObject)
-            XCTAssertEqual(testSet.count, 1)
+            XCTAssertEqual(testSet.count, originalCount + 1)
+        }
+    }
+    
+    func addObjectActivity(multiple objects: [Test?]) {
+        XCTContext.runActivity(named: "Add Multiple Objects") { (activity) in
+            XCTAssertNotNil(testSet)
+            XCTAssertEqual(testSet.count, 0)
+            var addedObjects = 0
+            objects.forEach({ (testObject) in
+                addObjectActivity(with: testObject)
+                addedObjects += 1
+            })
+            XCTAssertEqual(testSet.count, addedObjects)
         }
     }
     
@@ -72,14 +85,14 @@ class WeakObjectSetTestCase: XCTestCase {
     }
     
     func testAddMultipleObjects() {
-        XCTAssertNotNil(testSet)
         XCTAssertEqual(testSet.count, 0)
         XCTAssertFalse(testSet.contains(object: firstTestObject))
         XCTAssertFalse(testSet.contains(object: secondTestObject))
-        self.testSet.addObjects(objects: [firstTestObject!, secondTestObject!])
+        addObjectActivity(multiple: [firstTestObject, secondTestObject])
         XCTAssertEqual(testSet.count, 2)
         XCTAssertTrue(testSet.contains(object: firstTestObject))
         XCTAssertTrue(testSet.contains(object: secondTestObject))
+
     }
     
     func testHoldWeakReferenceToObjects() {
@@ -90,6 +103,28 @@ class WeakObjectSetTestCase: XCTestCase {
         XCTAssertEqual(testSet.count, 0)
         print(testSet.allObjects)
         print(testSet.objects)
+    }
+    
+    func testForEach() {
+        addObjectActivity(multiple: [firstTestObject, secondTestObject])
+        XCTAssertEqual(testSet.count, 2)
+        XCTAssertTrue(testSet.contains(object: firstTestObject))
+        XCTAssertTrue(testSet.contains(object: secondTestObject))
+        
+        var iteration = 0
+        testSet.forEach { (testObject) -> (Void) in
+            guard let actualTestObject = testObject else {
+                XCTFail("We should always have a value in this test")
+                return
+            }
+            // Why do these throw warnings? Either way this is a smoke test at least
+//            XCTAssertTrue(actualTestObject is Test)
+//            XCTAssertTrue(actualTestObject.value is Int)
+            XCTAssertEqual(actualTestObject.value, iteration)
+            iteration += 1
+//            XCTAssertEqual(type(of: actualTestObject), Test.self)
+//            XCTAssertEqual(type(of: actualTestObject.value), Int.self)
+        }
     }
     
 }

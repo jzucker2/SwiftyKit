@@ -68,7 +68,9 @@ public class WeakObjectSet<T: AnyObject> {
         //        self.objects.unionInPlace(objects.map { WeakObject(object: $0) })
     }
     
-    public func forEach(body: (WeakObject<T>) -> (Void)) {
-        self.objects.forEach(body)
+    public func forEach(body: (T?) -> (Void)) {
+        self.objects.forEach { (weakObject) in
+            body(weakObject.object)
+        }
     }
 }
