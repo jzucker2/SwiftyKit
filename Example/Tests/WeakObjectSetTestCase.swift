@@ -111,7 +111,6 @@ class WeakObjectSetTestCase: XCTestCase {
         XCTAssertTrue(testSet.contains(object: firstTestObject))
         XCTAssertTrue(testSet.contains(object: secondTestObject))
         
-        var iteration = 0
         testSet.forEach { (testObject) -> (Void) in
             guard let actualTestObject = testObject else {
                 XCTFail("We should always have a value in this test")
@@ -120,8 +119,7 @@ class WeakObjectSetTestCase: XCTestCase {
             // Why do these throw warnings? Either way this is a smoke test at least
 //            XCTAssertTrue(actualTestObject is Test)
 //            XCTAssertTrue(actualTestObject.value is Int)
-            XCTAssertEqual(actualTestObject.value, iteration)
-            iteration += 1
+            XCTAssertTrue((actualTestObject.value == 0) || (actualTestObject.value == 1))
 //            XCTAssertEqual(type(of: actualTestObject), Test.self)
 //            XCTAssertEqual(type(of: actualTestObject.value), Int.self)
         }
