@@ -74,8 +74,6 @@ public struct Request {
         switch actualBody {
         case let actualBodyData as Data:
             return actualBodyData
-        case _ as Codable:
-            fatalError("Have not implemented Codable")
         default:
             do {
                 return try JSONSerialization.data(withJSONObject: actualBody, options: .prettyPrinted)

@@ -64,4 +64,36 @@ class BasicNetworkProtocolTestCase: XCTestCase {
         XCTAssertEqual(emptyURLRequest.url!.absoluteString, "https://httpbin.org/get/?foo=bar")
     }
     
+    func testRequestReturnsNilWithNoData() {
+        let request = Request()
+        XCTAssertNotNil(request)
+        XCTAssertNil(try! request.bodyData())
+    }
+    
+    func testRequestReturnsBodyDataForData() {
+        let bodyData = Data()
+        XCTAssertNotNil(bodyData)
+        let request = Request(body: bodyData)
+        XCTAssertNotNil(request)
+        let requestBodyData = try! request.bodyData()
+        XCTAssertEqual(bodyData, requestBodyData)
+    }
+    
+    func testRequestReturnsBodyDataForJSON() {
+        let body = [
+            "foo": "bar"
+        ]
+        XCTAssertNotNil(body)
+        var testBodyData: Data?
+        do {
+            testBodyData = try JSONSerialization.data(withJSONObject: body, options: [.prettyPrinted])
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+        let request = Request(body: body)
+        XCTAssertNotNil(request)
+        let requestBodyData = try! request.bodyData()
+        XCTAssertEqual(testBodyData!, requestBodyData)
+    }
+    
 }

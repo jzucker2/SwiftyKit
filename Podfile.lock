@@ -1,5 +1,5 @@
 PODS:
-  - SwiftyKit (0.2.3)
+  - SwiftyKit (0.3.0)
 
 DEPENDENCIES:
   - SwiftyKit (from `.`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: .
 
 SPEC CHECKSUMS:
-  SwiftyKit: e96a3f9e29f801b2bf6d85c8e6779c7fb7670129
+  SwiftyKit: 8d2fb29c5229bff0c5d01b18e5c9c38fa8d965c8
 
 PODFILE CHECKSUM: d208ec251a9d7e41170e269f0189182a3b7a9e7c
 
