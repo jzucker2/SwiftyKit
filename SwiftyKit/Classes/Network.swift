@@ -54,7 +54,7 @@ public enum NetworkError: PromptError {
 
 public struct Request {
     let type: HTTPMethod
-    let headers: [String:String]?
+    var headers: [String:String]?
     let body: Any?
     let path: String?
     let queryParameters: [String:String]?
@@ -127,7 +127,12 @@ extension Network {
 extension Network {
     
     public func executeJSONTask(with request: Request, and completion: @escaping JSONNetworkResponseBlock) throws {
-        try executeDataTask(with: request, and: { (receivedResponse, receivedData, receivedError) -> (Void) in
+        var currentRequest = request
+        if var currentHeaders = currentRequest.headers {
+            currentHeaders["Content-Type"] = "application/json"
+            currentRequest.headers = currentHeaders
+        }
+        try executeDataTask(with: currentRequest, and: { (receivedResponse, receivedData, receivedError) -> (Void) in
             if let actualError = receivedError {
                 completion(nil, nil, actualError)
                 return
