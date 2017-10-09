@@ -521,12 +521,10 @@
 			inputPaths = (
 				"${SRCROOT}/../Pods/Target Support Files/Pods-SwiftyKit_Networking_Tests/Pods-SwiftyKit_Networking_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SwiftyKit/SwiftyKit.framework",
-				"${BUILT_PRODUCTS_DIR}/DVR/DVR.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DVR.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
