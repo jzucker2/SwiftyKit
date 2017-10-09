@@ -120,7 +120,7 @@ class ErrorViewController: UIViewController {
             try throwError(of: .promptError)
         } catch let promptError as PromptError {
             //            navigationItem.setPrompt(with: promptError)
-            show(presentable: <#T##PresentableError#>)
+            show(presentable: promptError)
         } catch {
             fatalError(error.localizedDescription)
         }

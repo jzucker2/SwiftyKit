@@ -8,34 +8,35 @@
 
 import Foundation
 
-enum HTTPMethod: String {
+public enum HTTPMethod: String {
     case POST = "POST"
     case GET = "GET"
     case PUT = "PUT"
     case PATCH = "PATCH"
+    case DELETE = "DELETE"
 }
 
-typealias DataNetworkResponseBlock = (HTTPURLResponse?, Data?, Error?) -> (Void)
-typealias JSONNetworkResponseBlock = (HTTPURLResponse?, Any?, Error?) -> (Void)
+public typealias DataNetworkResponseBlock = (HTTPURLResponse?, Data?, Error?) -> (Void)
+public typealias JSONNetworkResponseBlock = (HTTPURLResponse?, Any?, Error?) -> (Void)
 
-protocol Network: class {
+public protocol Network: class {
     
     var operationQueue: OperationQueue { get }
     
     var host: String { get }
     var session: URLSession { get }
-    func request(with path: String, and queryParameters: [String:String]?) -> URLRequest
-    func executeDataTask(of type: HTTPMethod, including headers: [String: String]?, sending body: Data?, with path: String, combining queryParameters: [String:String]?, and completion: @escaping DataNetworkResponseBlock) throws
-    func executeJSONTask(of type: HTTPMethod, including headers: [String: String]?, sending body: Any?, with path: String, combining queryParameters: [String:String]?, and completion: @escaping JSONNetworkResponseBlock) throws
+    func generateURLRequest(with path: String?, and queryParameters: [String : String]?) -> URLRequest
+    func executeDataTask(with request: Request, and completion: @escaping DataNetworkResponseBlock) throws
+    func executeJSONTask(with request: Request, and completion: @escaping JSONNetworkResponseBlock) throws
 }
 
-enum NetworkError: PromptError {
+public enum NetworkError: PromptError {
     case invalidBody(Any)
     case invalidURLResponse(URLResponse?)
     case JSONSerializationError(Error)
     case unknown(String?)
     
-    var prompt: String {
+    public var prompt: String {
         switch self {
         case .invalidBody(_):
             return "Body does not convert to data"
@@ -51,13 +52,65 @@ enum NetworkError: PromptError {
     }
 }
 
+public struct Request {
+    let type: HTTPMethod
+    let headers: [String:String]?
+    let body: Any?
+    let path: String?
+    let queryParameters: [String:String]?
+    
+    init(type: HTTPMethod = .GET, headers: [String:String]? = nil, body: Any? = nil, path: String? = nil, queryParameters: [String:String]? = nil) {
+        self.type = type
+        self.headers = headers
+        self.body = body
+        self.path = path
+        self.queryParameters = queryParameters
+    }
+    
+    func bodyData() throws -> Data? {
+        guard let actualBody = body else {
+            return nil
+        }
+        switch actualBody {
+        case let actualBodyData as Data:
+            return actualBodyData
+        case _ as Codable:
+            fatalError("Have not implemented Codable")
+        default:
+            do {
+                return try JSONSerialization.data(withJSONObject: actualBody, options: .prettyPrinted)
+            } catch {
+                throw NetworkError.invalidBody(actualBody)
+            }
+        }
+    }
+    
+}
+
 extension Network {
     
-    func executeDataTask(of type: HTTPMethod = .GET, including headers: [String: String]? = nil, sending body: Data? = nil, with path: String, combining queryParameters: [String:String]? = nil, and completion: @escaping DataNetworkResponseBlock) throws {
-        var taskRequest = request(with: path, and: queryParameters)
-        taskRequest.allHTTPHeaderFields = headers
-        taskRequest.httpMethod = type.rawValue
-        taskRequest.httpBody = body
+//    public func executeDataTask(of type: HTTPMethod = .GET, including headers: [String: String]? = nil, sending body: Data? = nil, with path: String, combining queryParameters: [String:String]? = nil, and completion: @escaping DataNetworkResponseBlock) throws {
+//        var taskRequest = request(with: path, and: queryParameters)
+//        taskRequest.allHTTPHeaderFields = headers
+//        taskRequest.httpMethod = type.rawValue
+//        taskRequest.httpBody = body
+//        session.dataTask(with: taskRequest) { (receivedData, receivedResponse, receivedError) in
+//            if let actualError = receivedError {
+//                completion(nil, nil, actualError)
+//                return
+//            }
+//            guard let httpResponse = receivedResponse as? HTTPURLResponse else {
+//                completion(nil, nil, NetworkError.invalidURLResponse(receivedResponse))
+//                return
+//            }
+//            completion(httpResponse, receivedData, nil)
+//        }.resume()
+//    }
+    public func executeDataTask(with request: Request, and completion: @escaping DataNetworkResponseBlock) throws {
+        var taskRequest = generateURLRequest(with: request.path, and: request.queryParameters)
+        taskRequest.allHTTPHeaderFields = request.headers
+        taskRequest.httpMethod = request.type.rawValue
+        taskRequest.httpBody = try request.bodyData()
         session.dataTask(with: taskRequest) { (receivedData, receivedResponse, receivedError) in
             if let actualError = receivedError {
                 completion(nil, nil, actualError)
@@ -68,23 +121,15 @@ extension Network {
                 return
             }
             completion(httpResponse, receivedData, nil)
-        }.resume()
+            }.resume()
     }
     
 }
 
 extension Network {
     
-    func executeJSONTask(of type: HTTPMethod = .GET, including headers: [String: String]? = ["Content-Type": "application/json"], sending body: Any? = nil, with path: String, combining queryParameters: [String:String]? = nil, and completion: @escaping JSONNetworkResponseBlock) throws {
-        var finalBodyData: Data?
-        if let actualBody = body {
-            do {
-                finalBodyData = try JSONSerialization.data(withJSONObject: actualBody, options: .prettyPrinted)
-            } catch {
-                throw NetworkError.invalidBody(actualBody)
-            }
-        }
-        try executeDataTask(of: type, including: headers, sending: finalBodyData, with: path, combining: queryParameters, and: { (receivedResponse, receivedData, receivedError) -> (Void) in
+    public func executeJSONTask(with request: Request, and completion: @escaping JSONNetworkResponseBlock) throws {
+        try executeDataTask(with: request, and: { (receivedResponse, receivedData, receivedError) -> (Void) in
             if let actualError = receivedError {
                 completion(nil, nil, actualError)
                 return
@@ -171,8 +216,12 @@ extension Network {
 
 extension Network {
     
-    func request(with path: String, and queryParameters: [String:String]? = nil) -> URLRequest {
-        guard let actualURL = URL(string: "\(host)/\(path)/") else {
+    public func generateURLRequest(with path: String? = nil, and queryParameters: [String:String]? = nil) -> URLRequest {
+        var finalPath = host
+        if let actualPath = path {
+            finalPath = "\(host)/\(actualPath)/"
+        }
+        guard let actualURL = URL(string: finalPath) else {
             fatalError()
         }
         guard var components = URLComponents(url: actualURL, resolvingAgainstBaseURL: false) else {
