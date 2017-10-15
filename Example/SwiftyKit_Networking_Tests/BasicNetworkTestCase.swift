@@ -23,7 +23,7 @@ class BasicNetworkTestCase: XCTestCase {
 //            let config = URLSessionConfiguration.ephemeral
 //            self.session = URLSession(configuration: config, delegate: nil, delegateQueue: operationQueue)
             let dvrSession = Session(cassetteName: name)
-//            dvrSession.recordingEnabled = false
+//            dvrSession.recordingEnabled = true
             self.session = dvrSession
             
         }

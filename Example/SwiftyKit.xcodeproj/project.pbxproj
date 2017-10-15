@@ -18,6 +18,11 @@
 		1748C1961F9406470047BDE0 /* -[ExecuteJSONTaskTestCase testBasicGETRequest].json in Resources */ = {isa = PBXBuildFile; fileRef = 1748C1951F9406450047BDE0 /* -[ExecuteJSONTaskTestCase testBasicGETRequest].json */; };
 		1748C1981F9406580047BDE0 /* -[ExecuteJSONTaskTestCase testBasicPATCHRequest].json in Resources */ = {isa = PBXBuildFile; fileRef = 1748C1971F9406560047BDE0 /* -[ExecuteJSONTaskTestCase testBasicPATCHRequest].json */; };
 		1748C19A1F9406790047BDE0 /* -[ExecuteJSONTaskTestCase testBasicPOSTRequest].json in Resources */ = {isa = PBXBuildFile; fileRef = 1748C1991F9406760047BDE0 /* -[ExecuteJSONTaskTestCase testBasicPOSTRequest].json */; };
+		1748C1A21F9410C10047BDE0 /* CodableRequestTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1748C1A11F9410C10047BDE0 /* CodableRequestTestCase.swift */; };
+		1748C1A41F94124F0047BDE0 /* ExecuteCodableRequestTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1748C1A31F94124F0047BDE0 /* ExecuteCodableRequestTestCase.swift */; };
+		1748C1AA1F941D520047BDE0 /* -[ExecuteCodableRequestTestCase testBasicGETRequest].json in Resources */ = {isa = PBXBuildFile; fileRef = 1748C1A91F941D4D0047BDE0 /* -[ExecuteCodableRequestTestCase testBasicGETRequest].json */; };
+		1748C1AC1F941D690047BDE0 /* -[ExecuteCodableRequestTestCase testBasicPOSTRequest].json in Resources */ = {isa = PBXBuildFile; fileRef = 1748C1AB1F941D660047BDE0 /* -[ExecuteCodableRequestTestCase testBasicPOSTRequest].json */; };
+		1748C1B11F941E8B0047BDE0 /* -[ExecuteCodableRequestTestCase testBasicPATCHRequest].json in Resources */ = {isa = PBXBuildFile; fileRef = 1748C1B01F941E860047BDE0 /* -[ExecuteCodableRequestTestCase testBasicPATCHRequest].json */; };
 		17DAEC4D1F3163D500E16EF0 /* PlainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DAEC4C1F3163D500E16EF0 /* PlainViewController.swift */; };
 		17DAEC5F1F31709700E16EF0 /* PlainViewControllerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DAEC5E1F31709700E16EF0 /* PlainViewControllerTestCase.swift */; };
 		17DAEC611F3171AA00E16EF0 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DAEC601F3171AA00E16EF0 /* ErrorViewController.swift */; };
@@ -74,6 +79,11 @@
 		1748C1951F9406450047BDE0 /* -[ExecuteJSONTaskTestCase testBasicGETRequest].json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "-[ExecuteJSONTaskTestCase testBasicGETRequest].json"; sourceTree = "<group>"; };
 		1748C1971F9406560047BDE0 /* -[ExecuteJSONTaskTestCase testBasicPATCHRequest].json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "-[ExecuteJSONTaskTestCase testBasicPATCHRequest].json"; sourceTree = "<group>"; };
 		1748C1991F9406760047BDE0 /* -[ExecuteJSONTaskTestCase testBasicPOSTRequest].json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "-[ExecuteJSONTaskTestCase testBasicPOSTRequest].json"; sourceTree = "<group>"; };
+		1748C1A11F9410C10047BDE0 /* CodableRequestTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableRequestTestCase.swift; sourceTree = "<group>"; };
+		1748C1A31F94124F0047BDE0 /* ExecuteCodableRequestTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecuteCodableRequestTestCase.swift; sourceTree = "<group>"; };
+		1748C1A91F941D4D0047BDE0 /* -[ExecuteCodableRequestTestCase testBasicGETRequest].json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "-[ExecuteCodableRequestTestCase testBasicGETRequest].json"; sourceTree = "<group>"; };
+		1748C1AB1F941D660047BDE0 /* -[ExecuteCodableRequestTestCase testBasicPOSTRequest].json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "-[ExecuteCodableRequestTestCase testBasicPOSTRequest].json"; sourceTree = "<group>"; };
+		1748C1B01F941E860047BDE0 /* -[ExecuteCodableRequestTestCase testBasicPATCHRequest].json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "-[ExecuteCodableRequestTestCase testBasicPATCHRequest].json"; sourceTree = "<group>"; };
 		17BFC15A1F4B9ABA00998351 /* SwiftyKit_Networking_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyKit_Networking_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17BFC15E1F4B9ABA00998351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17DAEC4C1F3163D500E16EF0 /* PlainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +155,9 @@
 		1748C18A1F9403A90047BDE0 /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
+				1748C1B01F941E860047BDE0 /* -[ExecuteCodableRequestTestCase testBasicPATCHRequest].json */,
+				1748C1AB1F941D660047BDE0 /* -[ExecuteCodableRequestTestCase testBasicPOSTRequest].json */,
+				1748C1A91F941D4D0047BDE0 /* -[ExecuteCodableRequestTestCase testBasicGETRequest].json */,
 				1748C18D1F94043E0047BDE0 /* -[ExecuteDataTaskTestCase testBasicGETRequest].json */,
 				1748C1911F9406190047BDE0 /* -[ExecuteDataTaskTestCase testBasicPATCHRequest].json */,
 				1748C1931F94062D0047BDE0 /* -[ExecuteDataTaskTestCase testBasicPOSTRequest].json */,
@@ -161,6 +174,8 @@
 				1748C1801F93E50F0047BDE0 /* RequestTestCase.swift */,
 				1748C1881F93F2220047BDE0 /* JSONRequestTestCase.swift */,
 				1748C1821F93E8320047BDE0 /* ExecuteDataTaskTestCase.swift */,
+				1748C1A11F9410C10047BDE0 /* CodableRequestTestCase.swift */,
+				1748C1A31F94124F0047BDE0 /* ExecuteCodableRequestTestCase.swift */,
 				1748C1841F93E87E0047BDE0 /* BasicNetworkTestCase.swift */,
 				1748C1861F93F1F40047BDE0 /* ExecuteJSONTaskTestCase.swift */,
 				1748C18A1F9403A90047BDE0 /* Fixtures */,
@@ -422,9 +437,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1748C1B11F941E8B0047BDE0 /* -[ExecuteCodableRequestTestCase testBasicPATCHRequest].json in Resources */,
 				1748C1981F9406580047BDE0 /* -[ExecuteJSONTaskTestCase testBasicPATCHRequest].json in Resources */,
 				1748C1941F9406300047BDE0 /* -[ExecuteDataTaskTestCase testBasicPOSTRequest].json in Resources */,
 				1748C19A1F9406790047BDE0 /* -[ExecuteJSONTaskTestCase testBasicPOSTRequest].json in Resources */,
+				1748C1AC1F941D690047BDE0 /* -[ExecuteCodableRequestTestCase testBasicPOSTRequest].json in Resources */,
+				1748C1AA1F941D520047BDE0 /* -[ExecuteCodableRequestTestCase testBasicGETRequest].json in Resources */,
 				1748C1901F9405E20047BDE0 /* -[ExecuteDataTaskTestCase testBasicGETRequest].json in Resources */,
 				1748C1921F94061B0047BDE0 /* -[ExecuteDataTaskTestCase testBasicPATCHRequest].json in Resources */,
 				1748C1961F9406470047BDE0 /* -[ExecuteJSONTaskTestCase testBasicGETRequest].json in Resources */,
@@ -620,8 +638,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1748C1A41F94124F0047BDE0 /* ExecuteCodableRequestTestCase.swift in Sources */,
 				1748C1871F93F1F40047BDE0 /* ExecuteJSONTaskTestCase.swift in Sources */,
 				1748C1891F93F2230047BDE0 /* JSONRequestTestCase.swift in Sources */,
+				1748C1A21F9410C10047BDE0 /* CodableRequestTestCase.swift in Sources */,
 				1748C1831F93E8320047BDE0 /* ExecuteDataTaskTestCase.swift in Sources */,
 				1748C1811F93E50F0047BDE0 /* RequestTestCase.swift in Sources */,
 				1748C1851F93E87E0047BDE0 /* BasicNetworkTestCase.swift in Sources */,

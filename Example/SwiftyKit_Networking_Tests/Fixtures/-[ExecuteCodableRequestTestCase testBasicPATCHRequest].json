@@ -1,0 +1,33 @@
+{
+  "interactions" : [
+    {
+      "response" : {
+        "body" : "ewogICJhcmdzIjoge30sIAogICJkYXRhIjogIntcImhlYWRlcnNcIjp7XCJBY2NlcHRcIjpcIipcXC8qXCIsXCJBY2NlcHQtRW5jb2RpbmdcIjpcImJyLCBnemlwLCBkZWZsYXRlXCIsXCJDb25uZWN0aW9uXCI6XCJjbG9zZVwiLFwiQ29udGVudC1UeXBlXCI6XCJhcHBsaWNhdGlvblxcL2pzb25cIixcIkhvc3RcIjpcImh0dHBiaW4ub3JnXCIsXCJVc2VyLUFnZW50XCI6XCJ4Y3Rlc3QgKHVua25vd24gdmVyc2lvbikgQ0ZOZXR3b3JrXFwvODg3IERhcndpblxcLzE2LjcuMFwiLFwiQ29udGVudC1MZW5ndGhcIjpcIjMyNFwiLFwiQWNjZXB0LUxhbmd1YWdlXCI6XCJlbi11c1wifSxcIm9yaWdpblwiOlwiNzMuNzEuMjM2LjQzXCIsXCJ1cmxcIjpcImh0dHBzOlxcL1xcL2h0dHBiaW4ub3JnXFwvcGF0Y2hcIn0iLCAKICAiZmlsZXMiOiB7fSwgCiAgImZvcm0iOiB7fSwgCiAgImhlYWRlcnMiOiB7CiAgICAiQWNjZXB0IjogIiovKiIsIAogICAgIkFjY2VwdC1FbmNvZGluZyI6ICJiciwgZ3ppcCwgZGVmbGF0ZSIsIAogICAgIkFjY2VwdC1MYW5ndWFnZSI6ICJlbi11cyIsIAogICAgIkNvbm5lY3Rpb24iOiAiY2xvc2UiLCAKICAgICJDb250ZW50LUxlbmd0aCI6ICIzMjQiLCAKICAgICJDb250ZW50LVR5cGUiOiAiYXBwbGljYXRpb24vanNvbiIsIAogICAgIkhvc3QiOiAiaHR0cGJpbi5vcmciLCAKICAgICJVc2VyLUFnZW50IjogInhjdGVzdCAodW5rbm93biB2ZXJzaW9uKSBDRk5ldHdvcmsvODg3IERhcndpbi8xNi43LjAiCiAgfSwgCiAgImpzb24iOiB7CiAgICAiaGVhZGVycyI6IHsKICAgICAgIkFjY2VwdCI6ICIqLyoiLCAKICAgICAgIkFjY2VwdC1FbmNvZGluZyI6ICJiciwgZ3ppcCwgZGVmbGF0ZSIsIAogICAgICAiQWNjZXB0LUxhbmd1YWdlIjogImVuLXVzIiwgCiAgICAgICJDb25uZWN0aW9uIjogImNsb3NlIiwgCiAgICAgICJDb250ZW50LUxlbmd0aCI6ICIzMjQiLCAKICAgICAgIkNvbnRlbnQtVHlwZSI6ICJhcHBsaWNhdGlvbi9qc29uIiwgCiAgICAgICJIb3N0IjogImh0dHBiaW4ub3JnIiwgCiAgICAgICJVc2VyLUFnZW50IjogInhjdGVzdCAodW5rbm93biB2ZXJzaW9uKSBDRk5ldHdvcmsvODg3IERhcndpbi8xNi43LjAiCiAgICB9LCAKICAgICJvcmlnaW4iOiAiNzMuNzEuMjM2LjQzIiwgCiAgICAidXJsIjogImh0dHBzOi8vaHR0cGJpbi5vcmcvcGF0Y2giCiAgfSwgCiAgIm9yaWdpbiI6ICI3My43MS4yMzYuNDMiLCAKICAidXJsIjogImh0dHBzOi8vaHR0cGJpbi5vcmcvcGF0Y2giCn0K",
+        "url" : "https:\/\/httpbin.org\/patch"
+      },
+      "recorded_at" : 1508108026.6291339,
+      "request" : {
+        "headers" : {
+          "Content-Type" : "application\/json"
+        },
+        "method" : "PATCH",
+        "body" : {
+          "headers" : {
+            "Accept" : "*\/*",
+            "Accept-Encoding" : "br, gzip, deflate",
+            "Connection" : "close",
+            "Content-Type" : "application\/json",
+            "Host" : "httpbin.org",
+            "User-Agent" : "xctest (unknown version) CFNetwork\/887 Darwin\/16.7.0",
+            "Content-Length" : "324",
+            "Accept-Language" : "en-us"
+          },
+          "origin" : "73.71.236.43",
+          "url" : "https:\/\/httpbin.org\/patch"
+        },
+        "url" : "https:\/\/httpbin.org\/patch"
+      }
+    }
+  ],
+  "name" : "-[ExecuteCodableRequestTestCase testBasicPATCHRequest]"
+}
