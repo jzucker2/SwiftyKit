@@ -1,0 +1,20 @@
+{
+  "interactions" : [
+    {
+      "response" : {
+        "body" : "ewogICJhcmdzIjoge30sIAogICJkYXRhIjogIiIsIAogICJmaWxlcyI6IHt9LCAKICAiZm9ybSI6IHsKICAgICJ7XG4gIFwiZm9vXCIgOiBcImJhclwiXG59IjogIiIKICB9LCAKICAiaGVhZGVycyI6IHsKICAgICJBY2NlcHQiOiAiKi8qIiwgCiAgICAiQWNjZXB0LUVuY29kaW5nIjogImJyLCBnemlwLCBkZWZsYXRlIiwgCiAgICAiQWNjZXB0LUxhbmd1YWdlIjogImVuLXVzIiwgCiAgICAiQ29ubmVjdGlvbiI6ICJjbG9zZSIsIAogICAgIkNvbnRlbnQtTGVuZ3RoIjogIjE5IiwgCiAgICAiQ29udGVudC1UeXBlIjogImFwcGxpY2F0aW9uL3gtd3d3LWZvcm0tdXJsZW5jb2RlZCIsIAogICAgIkhvc3QiOiAiaHR0cGJpbi5vcmciLCAKICAgICJVc2VyLUFnZW50IjogInhjdGVzdCAodW5rbm93biB2ZXJzaW9uKSBDRk5ldHdvcmsvODg3IERhcndpbi8xNi43LjAiCiAgfSwgCiAgImpzb24iOiBudWxsLCAKICAib3JpZ2luIjogIjczLjcxLjIzNi40MyIsIAogICJ1cmwiOiAiaHR0cHM6Ly9odHRwYmluLm9yZy9wb3N0Igp9Cg==",
+        "url" : "https:\/\/httpbin.org\/post"
+      },
+      "recorded_at" : 1508101792.4972579,
+      "request" : {
+        "headers" : {
+
+        },
+        "method" : "POST",
+        "body" : "ewogICJmb28iIDogImJhciIKfQ==",
+        "url" : "https:\/\/httpbin.org\/post"
+      }
+    }
+  ],
+  "name" : "-[ExecuteDataTaskTestCase testBasicPOSTRequest]"
+}

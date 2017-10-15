@@ -1,0 +1,19 @@
+{
+  "interactions" : [
+    {
+      "response" : {
+        "body" : "ewogICJhcmdzIjoge30sIAogICJoZWFkZXJzIjogewogICAgIkFjY2VwdCI6ICIqLyoiLCAKICAgICJBY2NlcHQtRW5jb2RpbmciOiAiYnIsIGd6aXAsIGRlZmxhdGUiLCAKICAgICJBY2NlcHQtTGFuZ3VhZ2UiOiAiZW4tdXMiLCAKICAgICJDb25uZWN0aW9uIjogImNsb3NlIiwgCiAgICAiQ29udGVudC1UeXBlIjogImFwcGxpY2F0aW9uL2pzb24iLCAKICAgICJIb3N0IjogImh0dHBiaW4ub3JnIiwgCiAgICAiVXNlci1BZ2VudCI6ICJ4Y3Rlc3QgKHVua25vd24gdmVyc2lvbikgQ0ZOZXR3b3JrLzg4NyBEYXJ3aW4vMTYuNy4wIgogIH0sIAogICJvcmlnaW4iOiAiNzMuNzEuMjM2LjQzIiwgCiAgInVybCI6ICJodHRwczovL2h0dHBiaW4ub3JnL2dldCIKfQo=",
+        "url" : "https:\/\/httpbin.org\/get"
+      },
+      "recorded_at" : 1508101819.8580379,
+      "request" : {
+        "headers" : {
+          "Content-Type" : "application\/json"
+        },
+        "method" : "GET",
+        "url" : "https:\/\/httpbin.org\/get"
+      }
+    }
+  ],
+  "name" : "-[ExecuteJSONTaskTestCase testBasicGETRequest]"
+}

@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import DVR
 @testable import SwiftyKit
 
 class BasicNetworkTestCase: XCTestCase {
@@ -18,17 +19,22 @@ class BasicNetworkTestCase: XCTestCase {
         
         let session: URLSession
         
-        required init() {
-            let config = URLSessionConfiguration.ephemeral
-            self.session = URLSession(configuration: config, delegate: nil, delegateQueue: operationQueue)
+        required init(name: String) {
+//            let config = URLSessionConfiguration.ephemeral
+//            self.session = URLSession(configuration: config, delegate: nil, delegateQueue: operationQueue)
+            let dvrSession = Session(cassetteName: name)
+//            dvrSession.recordingEnabled = false
+            self.session = dvrSession
+            
         }
     }
     
-    let network = TestNetwork()
+    var network = TestNetwork(name: "Example")
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        self.network = TestNetwork(name: name)
     }
     
     override func tearDown() {

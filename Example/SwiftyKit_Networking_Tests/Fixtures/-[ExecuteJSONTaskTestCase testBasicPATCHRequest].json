@@ -1,0 +1,22 @@
+{
+  "interactions" : [
+    {
+      "response" : {
+        "body" : "ewogICJhcmdzIjoge30sIAogICJkYXRhIjogIntcbiAgXCJmb29cIiA6IFwiYmFyXCJcbn0iLCAKICAiZmlsZXMiOiB7fSwgCiAgImZvcm0iOiB7fSwgCiAgImhlYWRlcnMiOiB7CiAgICAiQWNjZXB0IjogIiovKiIsIAogICAgIkFjY2VwdC1FbmNvZGluZyI6ICJiciwgZ3ppcCwgZGVmbGF0ZSIsIAogICAgIkFjY2VwdC1MYW5ndWFnZSI6ICJlbi11cyIsIAogICAgIkNvbm5lY3Rpb24iOiAiY2xvc2UiLCAKICAgICJDb250ZW50LUxlbmd0aCI6ICIxOSIsIAogICAgIkNvbnRlbnQtVHlwZSI6ICJhcHBsaWNhdGlvbi9qc29uIiwgCiAgICAiSG9zdCI6ICJodHRwYmluLm9yZyIsIAogICAgIlVzZXItQWdlbnQiOiAieGN0ZXN0ICh1bmtub3duIHZlcnNpb24pIENGTmV0d29yay84ODcgRGFyd2luLzE2LjcuMCIKICB9LCAKICAianNvbiI6IHsKICAgICJmb28iOiAiYmFyIgogIH0sIAogICJvcmlnaW4iOiAiNzMuNzEuMjM2LjQzIiwgCiAgInVybCI6ICJodHRwczovL2h0dHBiaW4ub3JnL3BhdGNoIgp9Cg==",
+        "url" : "https:\/\/httpbin.org\/patch"
+      },
+      "recorded_at" : 1508101838.295548,
+      "request" : {
+        "headers" : {
+          "Content-Type" : "application\/json"
+        },
+        "method" : "PATCH",
+        "body" : {
+          "foo" : "bar"
+        },
+        "url" : "https:\/\/httpbin.org\/patch"
+      }
+    }
+  ],
+  "name" : "-[ExecuteJSONTaskTestCase testBasicPATCHRequest]"
+}

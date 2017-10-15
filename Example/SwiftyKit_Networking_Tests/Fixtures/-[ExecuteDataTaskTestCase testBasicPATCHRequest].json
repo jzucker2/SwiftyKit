@@ -1,0 +1,20 @@
+{
+  "interactions" : [
+    {
+      "response" : {
+        "body" : "ewogICJhcmdzIjoge30sIAogICJkYXRhIjogIntcbiAgXCJmb29cIiA6IFwiYmFyXCJcbn0iLCAKICAiZmlsZXMiOiB7fSwgCiAgImZvcm0iOiB7fSwgCiAgImhlYWRlcnMiOiB7CiAgICAiQWNjZXB0IjogIiovKiIsIAogICAgIkFjY2VwdC1FbmNvZGluZyI6ICJiciwgZ3ppcCwgZGVmbGF0ZSIsIAogICAgIkFjY2VwdC1MYW5ndWFnZSI6ICJlbi11cyIsIAogICAgIkNvbm5lY3Rpb24iOiAiY2xvc2UiLCAKICAgICJDb250ZW50LUxlbmd0aCI6ICIxOSIsIAogICAgIkhvc3QiOiAiaHR0cGJpbi5vcmciLCAKICAgICJVc2VyLUFnZW50IjogInhjdGVzdCAodW5rbm93biB2ZXJzaW9uKSBDRk5ldHdvcmsvODg3IERhcndpbi8xNi43LjAiCiAgfSwgCiAgImpzb24iOiB7CiAgICAiZm9vIjogImJhciIKICB9LCAKICAib3JpZ2luIjogIjczLjcxLjIzNi40MyIsIAogICJ1cmwiOiAiaHR0cHM6Ly9odHRwYmluLm9yZy9wYXRjaCIKfQo=",
+        "url" : "https:\/\/httpbin.org\/patch"
+      },
+      "recorded_at" : 1508101773.948004,
+      "request" : {
+        "headers" : {
+
+        },
+        "method" : "PATCH",
+        "body" : "ewogICJmb28iIDogImJhciIKfQ==",
+        "url" : "https:\/\/httpbin.org\/patch"
+      }
+    }
+  ],
+  "name" : "-[ExecuteDataTaskTestCase testBasicPATCHRequest]"
+}
