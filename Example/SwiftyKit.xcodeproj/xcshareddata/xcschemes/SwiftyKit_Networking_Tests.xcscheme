@@ -22,6 +22,11 @@
                BlueprintName = "SwiftyKit_Networking_Tests"
                ReferencedContainer = "container:SwiftyKit.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "BasicNetworkTestCase">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <AdditionalOptions>

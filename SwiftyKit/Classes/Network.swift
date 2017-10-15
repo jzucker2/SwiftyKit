@@ -27,7 +27,7 @@ public protocol Network: class {
     var session: URLSession { get }
     func generateURLRequest(with path: String?, and queryParameters: [String : String]?) -> URLRequest
     func executeDataTask(with request: Request, and completion: @escaping DataNetworkResponseBlock) throws
-    func executeJSONTask(with request: Request, and completion: @escaping JSONNetworkResponseBlock) throws
+    func executeJSONTask(with request: JSONRequest, and completion: @escaping JSONNetworkResponseBlock) throws
 }
 
 public enum NetworkError: PromptError {
@@ -52,35 +52,64 @@ public enum NetworkError: PromptError {
     }
 }
 
-public struct Request {
+open class Request {
     let type: HTTPMethod
-    var headers: [String:String]?
-    let body: Any?
+    let headers: [String:String]?
+    let body: Data?
     let path: String?
     let queryParameters: [String:String]?
     
-    init(type: HTTPMethod = .GET, headers: [String:String]? = nil, body: Any? = nil, path: String? = nil, queryParameters: [String:String]? = nil) {
+    init(type: HTTPMethod = .GET, headers: [String:String]? = nil, body: Any? = nil, path: String? = nil, queryParameters: [String:String]? = nil) throws {
+        var finalBody: Data?
+        if let actualBody = body {
+            guard let convertedBody = actualBody as? Data else {
+                throw NetworkError.invalidBody("Can only handle Data")
+            }
+            finalBody = convertedBody
+        }
         self.type = type
         self.headers = headers
-        self.body = body
+        self.body = finalBody
         self.path = path
         self.queryParameters = queryParameters
     }
     
-    func bodyData() throws -> Data? {
-        guard let actualBody = body else {
-            return nil
+}
+
+open class JSONRequest: Request {
+    
+    override init(type: HTTPMethod = .GET, headers: [String : String]? = nil, body: Any? = nil, path: String? = nil, queryParameters: [String : String]? = nil) throws {
+        var finalHeaders = [String:String]()
+        if let providedHeaders = headers {
+            finalHeaders = providedHeaders
         }
-        switch actualBody {
-        case let actualBodyData as Data:
-            return actualBodyData
-        default:
-            do {
-                return try JSONSerialization.data(withJSONObject: actualBody, options: .prettyPrinted)
-            } catch {
-                throw NetworkError.invalidBody(actualBody)
+        finalHeaders["Content-Type"] = "application/json"
+        var finalBody: Data?
+        if let actualBody = body {
+            switch actualBody {
+            case let actualData as Data:
+                finalBody = actualData
+            default:
+                do {
+                    finalBody = try JSONSerialization.data(withJSONObject: actualBody, options: [.prettyPrinted])
+                } catch {
+                    throw NetworkError.invalidBody(actualBody)
+                }
             }
         }
+//        switch body {
+//        case let actualData as Data:
+//            finalBody = actualData
+//        case let actualObject as Any:
+//            do {
+//                finalBody = try JSONSerialization.data(withJSONObject: actualObject, options: [.prettyPrinted])
+//            } catch {
+//                throw NetworkError.invalidBody(actualObject)
+//            }
+//        default:
+//            finalBody = body
+//        }
+        try super.init(type: type, headers: finalHeaders, body: finalBody, path: path, queryParameters: queryParameters)
     }
     
 }
@@ -108,7 +137,7 @@ extension Network {
         var taskRequest = generateURLRequest(with: request.path, and: request.queryParameters)
         taskRequest.allHTTPHeaderFields = request.headers
         taskRequest.httpMethod = request.type.rawValue
-        taskRequest.httpBody = try request.bodyData()
+        taskRequest.httpBody = request.body
         session.dataTask(with: taskRequest) { (receivedData, receivedResponse, receivedError) in
             if let actualError = receivedError {
                 completion(nil, nil, actualError)
@@ -126,13 +155,8 @@ extension Network {
 
 extension Network {
     
-    public func executeJSONTask(with request: Request, and completion: @escaping JSONNetworkResponseBlock) throws {
-        var currentRequest = request
-        if var currentHeaders = currentRequest.headers {
-            currentHeaders["Content-Type"] = "application/json"
-            currentRequest.headers = currentHeaders
-        }
-        try executeDataTask(with: currentRequest, and: { (receivedResponse, receivedData, receivedError) -> (Void) in
+    public func executeJSONTask(with request: JSONRequest, and completion: @escaping JSONNetworkResponseBlock) throws {
+        try executeDataTask(with: request, and: { (receivedResponse, receivedData, receivedError) -> (Void) in
             if let actualError = receivedError {
                 completion(nil, nil, actualError)
                 return
@@ -222,7 +246,7 @@ extension Network {
     public func generateURLRequest(with path: String? = nil, and queryParameters: [String:String]? = nil) -> URLRequest {
         var finalPath = host
         if let actualPath = path {
-            finalPath = "\(host)/\(actualPath)/"
+            finalPath = "\(host)/\(actualPath)"
         }
         guard let actualURL = URL(string: finalPath) else {
             fatalError()

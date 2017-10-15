@@ -1,6 +1,6 @@
 //
-//  BasicNetworkProtocolTestCase.swift
-//  BasicNetworkProtocolTestCase
+//  RequestTestCase.swift
+//  RequestTestCase
 //
 //  Created by Jordan Zucker on 8/21/17.
 //  Copyright © 2017 CocoaPods. All rights reserved.
@@ -9,22 +9,7 @@
 import XCTest
 @testable import SwiftyKit
 
-class BasicNetworkProtocolTestCase: XCTestCase {
-    
-    class TestNetwork: Network {
-        let operationQueue = OperationQueue()
-        
-        let host: String = "https://httpbin.org"
-        
-        let session: URLSession
-        
-        required init() {
-            let config = URLSessionConfiguration.ephemeral
-            self.session = URLSession(configuration: config, delegate: nil, delegateQueue: operationQueue)
-        }
-    }
-    
-    let network = TestNetwork()
+class RequestTestCase: BasicNetworkTestCase {
     
     override func setUp() {
         super.setUp()
@@ -49,7 +34,7 @@ class BasicNetworkProtocolTestCase: XCTestCase {
     func testGeneratesURLWithPath() {
         let emptyURLRequest = network.generateURLRequest(with: "get")
         XCTAssertNotNil(emptyURLRequest)
-        XCTAssertEqual(emptyURLRequest.url!.absoluteString, "https://httpbin.org/get/")
+        XCTAssertEqual(emptyURLRequest.url!.absoluteString, "https://httpbin.org/get")
     }
     
     func testGeneratesURLWithQueryParameters() {
@@ -61,39 +46,45 @@ class BasicNetworkProtocolTestCase: XCTestCase {
     func testGeneratesURLWithPathAndQueryParameters() {
         let emptyURLRequest = network.generateURLRequest(with: "get", and: ["foo": "bar"])
         XCTAssertNotNil(emptyURLRequest)
-        XCTAssertEqual(emptyURLRequest.url!.absoluteString, "https://httpbin.org/get/?foo=bar")
+        XCTAssertEqual(emptyURLRequest.url!.absoluteString, "https://httpbin.org/get?foo=bar")
     }
     
-    func testRequestReturnsNilWithNoData() {
-        let request = Request()
+    func testRequestHasNilBodyWhenInitializerIsGivenNilBody() {
+        let request = try! Request(body: nil)
         XCTAssertNotNil(request)
-        XCTAssertNil(try! request.bodyData())
+        let requestBody = request.body
+        XCTAssertNil(requestBody)
+        
     }
     
-    func testRequestReturnsBodyDataForData() {
+    func testRequestInitializerFailsWhenBodyIsNotData() {
+        let body = ["foo", "bar"]
+        XCTAssertThrowsError(try Request(body: body))
+    }
+    
+    func testRequestHasDataFromInitializer() {
         let bodyData = Data()
         XCTAssertNotNil(bodyData)
-        let request = Request(body: bodyData)
+        let request = try! Request(body: bodyData)
         XCTAssertNotNil(request)
-        let requestBodyData = try! request.bodyData()
-        XCTAssertEqual(bodyData, requestBodyData)
+        let requestBody = request.body
+        XCTAssertNotNil(requestBody)
+        XCTAssertEqual(bodyData, requestBody!)
     }
     
-    func testRequestReturnsBodyDataForJSON() {
-        let body = [
-            "foo": "bar"
-        ]
-        XCTAssertNotNil(body)
-        var testBodyData: Data?
-        do {
-            testBodyData = try JSONSerialization.data(withJSONObject: body, options: [.prettyPrinted])
-        } catch {
-            XCTFail(error.localizedDescription)
-        }
-        let request = Request(body: body)
-        XCTAssertNotNil(request)
-        let requestBodyData = try! request.bodyData()
-        XCTAssertEqual(testBodyData!, requestBodyData)
-    }
+//    func testRequestReturnsNilWithNoData() {
+//        let request = Request()
+//        XCTAssertNotNil(request)
+//        XCTAssertNil(try! request.bodyData())
+//    }
+//    
+//    func testRequestReturnsBodyDataForData() {
+//        let bodyData = Data()
+//        XCTAssertNotNil(bodyData)
+//        let request = Request(body: bodyData)
+//        XCTAssertNotNil(request)
+//        let requestBodyData = try! request.bodyData()
+//        XCTAssertEqual(bodyData, requestBodyData)
+//    }
     
 }
