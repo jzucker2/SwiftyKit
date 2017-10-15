@@ -8,7 +8,6 @@
 import Foundation
 
 public protocol Remote: Codable {
-//    var uniqueIdentifier: String { get }
     static var service: String { get }
     static var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy { get }
 }
@@ -122,18 +121,5 @@ extension Network {
         let request = try ManagedCodableRequest<U>(type: .PATCH, object: object, body: body)
         try executeCodableTask(with: request, and: completion)
     }
-    
-//    public func GET<U: RemoteManaged>(object: U, combining queryParameters: [String: String]? = nil, and completion: @escaping (HTTPURLResponse?, U?, Error?) -> (Void)) throws {
-//        let request = try ManagedCodableRequest(type: .GET, object: , queryParameters: queryParameters)
-//
-//    }
-//
-//    public func POST<T>(sending body: Any? = nil, combining queryParameters: [String: String]? = nil, and completion: @escaping (HTTPURLResponse?, T?, Error?) -> (Void)) throws {
-//
-//    }
-//
-//    public func PATCH<T>(sending body: Any? = nil, combining queryParameters: [String: String]? = nil, and completion: @escaping (HTTPURLResponse?, T?, Error?) -> (Void)) throws {
-//
-//    }
     
 }

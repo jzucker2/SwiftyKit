@@ -29,7 +29,7 @@ class BasicNetworkTestCase: XCTestCase {
         }
     }
     
-    var network = TestNetwork(name: "Example")
+    var network: TestNetwork!
     
     override func setUp() {
         super.setUp()
