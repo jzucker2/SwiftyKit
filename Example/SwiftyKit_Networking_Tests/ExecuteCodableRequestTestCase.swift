@@ -167,4 +167,67 @@ class ExecuteCodableRequestTestCase: BasicNetworkTestCase {
         }
     }
     
+    func testGETWrapper() {
+        let expectedResult = TestObject.expectedGETResult
+        let request = try! CodableRequest<TestObject>(type: .GET)
+        let expectation = self.expectation(description: "get request")
+        XCTAssertNotNil(request)
+        try! network.GET(expectedResult, and: { (response, object, error) -> (Void) in
+            guard let actualObject = object else {
+                XCTFail("Expected object")
+                return
+            }
+            print("response: \(String(describing: response))")
+            print("payload: \(actualObject)")
+            XCTAssertNotNil(actualObject)
+            XCTAssertEqual(actualObject, expectedResult)
+            expectation.fulfill()
+        })
+        self.waitForExpectations(timeout: 5) { (error) in
+            XCTAssertNil(error)
+        }
+    }
+    
+    func testBasicPOSTWrapper() {
+        let expectedResult = POSTTestObject.expectedPOSTResult
+        let request = try! CodableRequest<POSTTestObject>(type: .POST, body: expectedResult)
+        let expectation = self.expectation(description: "post request")
+        XCTAssertNotNil(request)
+        try! network.POST(expectedResult, body: expectedResult, and: { (response, object, error) -> (Void) in
+            guard let actualObject = object else {
+                XCTFail("Expected object")
+                return
+            }
+            print("response: \(String(describing: response))")
+            print("payload: \(actualObject)")
+            XCTAssertNotNil(actualObject)
+            XCTAssertEqual(actualObject, expectedResult)
+            expectation.fulfill()
+        })
+        self.waitForExpectations(timeout: 5) { (error) in
+            XCTAssertNil(error)
+        }
+    }
+    
+    func testPATCHWrapper() {
+        let expectedResult = PATCHTestObject.expectedPATCHResult
+        let request = try! CodableRequest<PATCHTestObject>(type: .PATCH, body: expectedResult)
+        let expectation = self.expectation(description: "patch request")
+        XCTAssertNotNil(request)
+        try! network.executeCodableTask(with: request, and: { (response, object, error) -> (Void) in
+            guard let actualObject = object else {
+                XCTFail("Expected object")
+                return
+            }
+            print("response: \(String(describing: response))")
+            print("payload: \(actualObject)")
+            XCTAssertNotNil(actualObject)
+            XCTAssertEqual(actualObject, expectedResult)
+            expectation.fulfill()
+        })
+        self.waitForExpectations(timeout: 5) { (error) in
+            XCTAssertNil(error)
+        }
+    }
+    
 }
