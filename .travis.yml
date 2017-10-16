@@ -19,6 +19,7 @@ matrix:
     - env: RUN_SCHEME="SwiftyKit-Example"
     - env: RUN_SCHEME="SwiftyKit_Tests"
     - env: RUN_SCHEME="SwiftyKit_Networking_Tests"
+    - env: RUN_SCHEME="SwiftyKit_CoreData_Tests"
 
 script:
   - echo $RUN_SCHEME

@@ -16,4 +16,8 @@ target 'SwiftyKit_Example' do
       pod 'DVR'
       pod 'SwiftyKit', :path => '.'      
   end
+  target 'SwiftyKit_CoreData_Tests' do
+      inherit! :search_paths
+      pod 'SwiftyKit', :path => '.'
+  end
 end
