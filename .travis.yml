@@ -4,28 +4,7 @@
 
 osx_image: xcode9
 language: objective-c
-# cache: cocoapods
-# podfile: Example/Podfile
-# before_install:
-# - gem install cocoapods # Since Travis is not always on latest version
-# - pod install --project-directory=Example
-# xcodebuild build-for-testing -workspace MyWorkspace.xcworkspace -scheme MyScheme -destination generic/platform=iOS
-# xcodebuild build-for-testing -workspace SwiftyKit.xcworkspace -target SwiftyKit_Tests -destination generic/platform=iOS
-# xcodebuild build-for-testing -workspace SwiftyKit.xcworkspace -scheme SwiftyKit_Tests -destination generic/platform=iOS
-# xcodebuild build-for-testing -workspace SwiftyKit.xcworkspace -scheme SwiftyKit-Example -destination generic/platform=iOS
-# xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit-Example -destination 'platform=iOS Simulator,name=iPhone 7' | xcpretty
-# xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit_Tests -destination 'platform=iOS Simulator,name=iPhone 7' | xcpretty
 
-# - set -o pipefail && xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit-Example -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.0' | xcpretty
-# - set -o pipefail && xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit_Tests -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.0' | xcpretty
-# - set -o pipefail && xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit-Example -destination 'platform=iOS Simulator,name=iPhone SE,OS=11.0' | xcpretty
-# - set -o pipefail && xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit_Tests -destination 'platform=iOS Simulator,name=iPhone SE,OS=11.0' | xcpretty
-# script:
-# - set -o pipefail && xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit-Example -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.0' | xcpretty
-# - set -o pipefail && xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit_Tests -destination 'platform=iOS Simulator,name=iPhone SE,OS=10.0' | xcpretty
-# - set -o pipefail && xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit-Example -destination 'platform=iOS Simulator,name=iPhone SE,OS=11.0' | xcpretty
-# - set -o pipefail && xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit_Tests -destination 'platform=iOS Simulator,name=iPhone SE,OS=11.0' | xcpretty
-# - pod lib lint
 cache:
   - bundler
   - cocoapods
@@ -39,21 +18,7 @@ matrix:
   include:
     - env: RUN_SCHEME="SwiftyKit-Example"
     - env: RUN_SCHEME="SwiftyKit_Tests"
-    # - env: RUN_SCHEME="SwiftyKit-Example" RUN_DESTINATION="platform=iOS Simulator,name=iPhone SE,OS=10.0"
-    # - env: RUN_SCHEME="SwiftyKit_Tests" RUN_DESTINATION="platform='iOS Simulator',name='iPhone\ SE',OS=10.0"
-    # - env: RUN_SCHEME="SwiftyKit-Example" RUN_DESTINATION="platform='iOS Simulator',name='iPhone\ SE',OS=11.0"
-    # - env: RUN_SCHEME="SwiftyKit_Tests" RUN_DESTINATION="platform='iOS Simulator',name='iPhone\ SE',OS=11.0"
-    # # - env: NAME="[ObjC] iOS 9.3 64bit" FASTLANE_LANE=test_ios FASTLANE_ENV=ios93x64 PN_TEST_LANG="ObjC"
-    # # - env: NAME="[ObjC] iOS 10.2 64bit" FASTLANE_LANE=test_ios FASTLANE_ENV=ios102x64 PN_TEST_LANG="ObjC"
-    # # - env: NAME="[ObjC] tvOS 9.2" FASTLANE_LANE=test_tvos FASTLANE_ENV=tvos92 PN_TEST_LANG="ObjC"
-    # # - env: NAME="[ObjC] tvOS 10.1" FASTLANE_LANE=test_tvos FASTLANE_ENV=tvos101 PN_TEST_LANG="ObjC"
-    # # - env: NAME="[ObjC] macOS" FASTLANE_LANE=test_macos FASTLANE_ENV=macos PN_TEST_LANG="ObjC"
-    #
-    # - env: RUN_SCHEME="SwiftyKit-Example" RUN_PLATFORM="platform=\"iOS Simulator\"" RUN_DEVICE_NAME="\"iPhone 7\"" RUN_OS=10.0
-    # - env: xcodebuild test -workspace SwiftyKit.xcworkspace -scheme $RUN_SCHEME -destination '$"{platform=RUN_PLATFORM,name=RUN_DEVICE_NAME,OS=RUN_OS}"' | xcpretty
-    # - env: RUN_SCHEME="SwiftyKit-Example" RUN_PLATFORM="\"iOS Simulator\"" RUN_DEVICE_NAME='iPhone 7' RUN_OS=10.0
-    # - env: xcodebuild test -workspace SwiftyKit.xcworkspace -scheme $RUN_SCHEME -destination name=$RUN_DEVICE_NAME,platform=$RUN_PLATFORM,OS=$RUN_OS | xcpretty
-    # xcodebuild test -workspace SwiftyKit.xcworkspace -scheme SwiftyKit-Example -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.0'
+    - env: RUN_SCHEME="SwiftyKit_Networking_Tests"
 
 script:
   - echo $RUN_SCHEME

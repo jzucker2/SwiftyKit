@@ -1,0 +1,33 @@
+{
+  "interactions" : [
+    {
+      "response" : {
+        "body" : "ewogICJhcmdzIjoge30sIAogICJkYXRhIjogIntcImhlYWRlcnNcIjp7XCJBY2NlcHRcIjpcIipcXC8qXCIsXCJBY2NlcHQtRW5jb2RpbmdcIjpcImJyLCBnemlwLCBkZWZsYXRlXCIsXCJDb25uZWN0aW9uXCI6XCJjbG9zZVwiLFwiQ29udGVudC1UeXBlXCI6XCJhcHBsaWNhdGlvblxcL2pzb25cIixcIkhvc3RcIjpcImh0dHBiaW4ub3JnXCIsXCJVc2VyLUFnZW50XCI6XCJ4Y3Rlc3QgKHVua25vd24gdmVyc2lvbikgQ0ZOZXR3b3JrXFwvODg3IERhcndpblxcLzE2LjcuMFwiLFwiQ29udGVudC1MZW5ndGhcIjpcIjMyM1wiLFwiQWNjZXB0LUxhbmd1YWdlXCI6XCJlbi11c1wifSxcIm9yaWdpblwiOlwiNzMuNzEuMjM2LjQzXCIsXCJ1cmxcIjpcImh0dHBzOlxcL1xcL2h0dHBiaW4ub3JnXFwvcG9zdFwifSIsIAogICJmaWxlcyI6IHt9LCAKICAiZm9ybSI6IHt9LCAKICAiaGVhZGVycyI6IHsKICAgICJBY2NlcHQiOiAiKi8qIiwgCiAgICAiQWNjZXB0LUVuY29kaW5nIjogImJyLCBnemlwLCBkZWZsYXRlIiwgCiAgICAiQWNjZXB0LUxhbmd1YWdlIjogImVuLXVzIiwgCiAgICAiQ29ubmVjdGlvbiI6ICJjbG9zZSIsIAogICAgIkNvbnRlbnQtTGVuZ3RoIjogIjMyMyIsIAogICAgIkNvbnRlbnQtVHlwZSI6ICJhcHBsaWNhdGlvbi9qc29uIiwgCiAgICAiSG9zdCI6ICJodHRwYmluLm9yZyIsIAogICAgIlVzZXItQWdlbnQiOiAieGN0ZXN0ICh1bmtub3duIHZlcnNpb24pIENGTmV0d29yay84ODcgRGFyd2luLzE2LjcuMCIKICB9LCAKICAianNvbiI6IHsKICAgICJoZWFkZXJzIjogewogICAgICAiQWNjZXB0IjogIiovKiIsIAogICAgICAiQWNjZXB0LUVuY29kaW5nIjogImJyLCBnemlwLCBkZWZsYXRlIiwgCiAgICAgICJBY2NlcHQtTGFuZ3VhZ2UiOiAiZW4tdXMiLCAKICAgICAgIkNvbm5lY3Rpb24iOiAiY2xvc2UiLCAKICAgICAgIkNvbnRlbnQtTGVuZ3RoIjogIjMyMyIsIAogICAgICAiQ29udGVudC1UeXBlIjogImFwcGxpY2F0aW9uL2pzb24iLCAKICAgICAgIkhvc3QiOiAiaHR0cGJpbi5vcmciLCAKICAgICAgIlVzZXItQWdlbnQiOiAieGN0ZXN0ICh1bmtub3duIHZlcnNpb24pIENGTmV0d29yay84ODcgRGFyd2luLzE2LjcuMCIKICAgIH0sIAogICAgIm9yaWdpbiI6ICI3My43MS4yMzYuNDMiLCAKICAgICJ1cmwiOiAiaHR0cHM6Ly9odHRwYmluLm9yZy9wb3N0IgogIH0sIAogICJvcmlnaW4iOiAiNzMuNzEuMjM2LjQzIiwgCiAgInVybCI6ICJodHRwczovL2h0dHBiaW4ub3JnL3Bvc3QiCn0K",
+        "url" : "https:\/\/httpbin.org\/post"
+      },
+      "recorded_at" : 1508111177.41295,
+      "request" : {
+        "headers" : {
+          "Content-Type" : "application\/json"
+        },
+        "method" : "POST",
+        "body" : {
+          "headers" : {
+            "Accept" : "*\/*",
+            "Accept-Encoding" : "br, gzip, deflate",
+            "Connection" : "close",
+            "Content-Type" : "application\/json",
+            "Host" : "httpbin.org",
+            "User-Agent" : "xctest (unknown version) CFNetwork\/887 Darwin\/16.7.0",
+            "Content-Length" : "323",
+            "Accept-Language" : "en-us"
+          },
+          "origin" : "73.71.236.43",
+          "url" : "https:\/\/httpbin.org\/post"
+        },
+        "url" : "https:\/\/httpbin.org\/post"
+      }
+    }
+  ],
+  "name" : "-[ExecuteCodableRequestTestCase testBasicPOSTWrapper]"
+}

@@ -1,0 +1,19 @@
+{
+  "interactions" : [
+    {
+      "response" : {
+        "body" : "ewogICJhcmdzIjoge30sIAogICJoZWFkZXJzIjogewogICAgIkFjY2VwdCI6ICIqLyoiLCAKICAgICJBY2NlcHQtRW5jb2RpbmciOiAiYnIsIGd6aXAsIGRlZmxhdGUiLCAKICAgICJBY2NlcHQtTGFuZ3VhZ2UiOiAiZW4tdXMiLCAKICAgICJDb25uZWN0aW9uIjogImNsb3NlIiwgCiAgICAiSG9zdCI6ICJodHRwYmluLm9yZyIsIAogICAgIlVzZXItQWdlbnQiOiAieGN0ZXN0ICh1bmtub3duIHZlcnNpb24pIENGTmV0d29yay84ODcgRGFyd2luLzE2LjcuMCIKICB9LCAKICAib3JpZ2luIjogIjczLjcxLjIzNi40MyIsIAogICJ1cmwiOiAiaHR0cHM6Ly9odHRwYmluLm9yZy9nZXQiCn0K",
+        "url" : "https:\/\/httpbin.org\/get"
+      },
+      "recorded_at" : 1508101296.8057709,
+      "request" : {
+        "headers" : {
+
+        },
+        "method" : "GET",
+        "url" : "https:\/\/httpbin.org\/get"
+      }
+    }
+  ],
+  "name" : "-[ExecuteDataTaskTestCase testBasicGETRequest]"
+}
