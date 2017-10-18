@@ -59,7 +59,7 @@ open class Request {
     let path: String?
     let queryParameters: [String:String]?
     
-    init(type: HTTPMethod = .GET, headers: [String:String]? = nil, body: Any? = nil, path: String? = nil, queryParameters: [String:String]? = nil) throws {
+    public init(type: HTTPMethod = .GET, headers: [String:String]? = nil, body: Any? = nil, path: String? = nil, queryParameters: [String:String]? = nil) throws {
         var finalBody: Data?
         if let actualBody = body {
             guard let convertedBody = actualBody as? Data else {
@@ -78,7 +78,7 @@ open class Request {
 
 open class JSONRequest: Request {
     
-    override init(type: HTTPMethod = .GET, headers: [String : String]? = nil, body: Any? = nil, path: String? = nil, queryParameters: [String : String]? = nil) throws {
+    public override init(type: HTTPMethod = .GET, headers: [String : String]? = nil, body: Any? = nil, path: String? = nil, queryParameters: [String : String]? = nil) throws {
         var finalHeaders = [String:String]()
         if let providedHeaders = headers {
             finalHeaders = providedHeaders
