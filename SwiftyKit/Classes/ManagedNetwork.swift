@@ -17,13 +17,13 @@ public protocol RemoteManaged: Remote {
 }
 
 extension Remote {
-    static var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy {
+    public static var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy {
         return .deferredToDate
     }
 }
 
 open class CodableRequest<T: Remote>: JSONRequest {
-    override init(type: HTTPMethod = .GET, headers: [String : String]? = nil, body: Any? = nil, path: String? = nil, queryParameters: [String : String]? = nil) throws {
+    public override init(type: HTTPMethod = .GET, headers: [String : String]? = nil, body: Any? = nil, path: String? = nil, queryParameters: [String : String]? = nil) throws {
         var finalHeaders = [String:String]()
         if let providedHeaders = headers {
             finalHeaders = providedHeaders
