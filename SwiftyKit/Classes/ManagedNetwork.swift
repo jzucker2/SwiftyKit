@@ -7,21 +7,6 @@
 
 import Foundation
 
-public protocol Remote: Codable {
-    static var service: String { get }
-    static var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy { get }
-}
-
-public protocol RemoteManaged: Remote {
-    var uniqueIdentifier: String { get }
-}
-
-extension Remote {
-    public static var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy {
-        return .deferredToDate
-    }
-}
-
 open class CodableRequest<T: Remote>: JSONRequest {
     public override init(type: HTTPMethod = .GET, headers: [String : String]? = nil, body: Any? = nil, path: String? = nil, queryParameters: [String : String]? = nil) throws {
         var finalHeaders = [String:String]()
