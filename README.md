@@ -68,6 +68,11 @@ public class ReferenceWritableKeyPath<Root, Value> : WritableKeyPath<Root, Value
 }
 ```
 
+## To Do
+
+- [ ] Add core data tests
+- [ ] Add a data controller class
+
 ## Author
 
 jzucker2, jordan.zucker@gmail.com
