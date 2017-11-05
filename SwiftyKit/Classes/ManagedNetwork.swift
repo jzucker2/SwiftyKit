@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol Remote: Codable {
-    static var service: String { get }
+    static var service: String? { get }
     static var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy { get }
 }
 
@@ -23,7 +23,7 @@ extension Remote {
 }
 
 open class CodableRequest<T: Remote>: JSONRequest {
-    public override init(type: HTTPMethod = .GET, headers: [String : String]? = nil, body: Any? = nil, path: String? = nil, queryParameters: [String : String]? = nil) throws {
+    public required init(type: HTTPMethod = .GET, headers: [String : String]? = nil, body: Any? = nil, path: String? = nil, queryParameters: [String : String]? = nil) throws {
         var finalHeaders = [String:String]()
         if let providedHeaders = headers {
             finalHeaders = providedHeaders
@@ -54,15 +54,24 @@ open class CodableRequest<T: Remote>: JSONRequest {
 }
 
 open class ManagedCodableRequest<U: RemoteManaged>: CodableRequest<U> {
-    public required init(type: HTTPMethod = .GET, object: U, body: Any? = nil, headers: [String : String]? = nil, queryParameters: [String : String]? = nil) throws {
-        var finalPath: String
+    public convenience init(type: HTTPMethod = .GET, object: U, body: Any? = nil, path: String? = nil, headers: [String : String]? = nil, queryParameters: [String : String]? = nil) throws {
+        var prefixPath: String = ""
+        if let providedPath = path {
+            prefixPath = "\(providedPath)/"
+        }
+        var objectPath: String = ""
         switch type {
         case .GET, .PATCH, .PUT, .DELETE:
-            finalPath = "\(U.service)/\(object.uniqueIdentifier)"
+            objectPath = "\(U.service)/\(object.uniqueIdentifier)"
         case .POST:
-            finalPath = "\(U.service)"
+            objectPath = "\(U.service)"
         }
-        try super.init(type: type, headers: headers, body: body, path: finalPath, queryParameters: queryParameters)
+        let finalPath = "\(prefixPath)\(objectPath)"
+        try self.init(type: type, headers: headers, body: body, path: finalPath, queryParameters: queryParameters)
+    }
+    
+    public required init(type: HTTPMethod = .GET, headers: [String : String]? = nil, body: Any? = nil, path: String? = nil, queryParameters: [String : String]? = nil) throws {
+        try super.init(type: type, headers: headers, body: body, path: path, queryParameters: queryParameters)
     }
 }
 

@@ -52,14 +52,38 @@ public enum NetworkError: PromptError {
     }
 }
 
+public protocol Requestable: class {
+    var type: HTTPMethod { get }
+    var headers: [String:String]? { get }
+    var body: Data? { get }
+    var path: String? { get }
+    var queryParameters: [String:String]? { get }
+    init(type: HTTPMethod, headers: [String:String]?, body: Any?, path: String?, queryParameters: [String:String]?) throws
+    static func GET(headers: [String:String]?, path: String?, queryParameters:[String:String]?) throws -> Self
+    static func POST(headers: [String:String]?, body: Any?, path: String?, queryParameters:[String:String]?) throws -> Self
+    static func PATCH(headers: [String:String]?, body: Any?, path: String?, queryParameters:[String:String]?) throws -> Self
+}
+
+//extension Requestable {
+//    public static func GET(headers: [String:String]?, path: String?, queryParameters:[String:String]?) throws -> Self {
+//        return try Self(type: .GET, headers: headers, body: nil, path: path, queryParameters: queryParameters)
+//    }
+//    public static func POST(headers: [String:String]?, body: Any?, path: String?, queryParameters:[String:String]?) throws -> Self {
+//        return try Self(type: .POST, headers: headers, body: body, path: path, queryParameters: queryParameters)
+//    }
+//    public static func PATCH(headers: [String:String]?, body: Any?, path: String?, queryParameters:[String:String]?) throws -> Self {
+//        return try Self(type: .PATCH, headers: headers, body: body, path: path, queryParameters: queryParameters)
+//    }
+//}
+
 open class Request {
-    let type: HTTPMethod
-    let headers: [String:String]?
-    let body: Data?
-    let path: String?
-    let queryParameters: [String:String]?
+    public let type: HTTPMethod
+    public let headers: [String:String]?
+    public let body: Data?
+    public let path: String?
+    public let queryParameters: [String:String]?
     
-    public init(type: HTTPMethod = .GET, headers: [String:String]? = nil, body: Any? = nil, path: String? = nil, queryParameters: [String:String]? = nil) throws {
+    public required init(type: HTTPMethod = .GET, headers: [String:String]? = nil, body: Any? = nil, path: String? = nil, queryParameters: [String:String]? = nil) throws {
         var finalBody: Data?
         if let actualBody = body {
             guard let convertedBody = actualBody as? Data else {
@@ -76,9 +100,11 @@ open class Request {
     
 }
 
+extension Request: Requestable { }
+
 open class JSONRequest: Request {
     
-    public override init(type: HTTPMethod = .GET, headers: [String : String]? = nil, body: Any? = nil, path: String? = nil, queryParameters: [String : String]? = nil) throws {
+    public required init(type: HTTPMethod = .GET, headers: [String : String]? = nil, body: Any? = nil, path: String? = nil, queryParameters: [String : String]? = nil) throws {
         var finalHeaders = [String:String]()
         if let providedHeaders = headers {
             finalHeaders = providedHeaders
