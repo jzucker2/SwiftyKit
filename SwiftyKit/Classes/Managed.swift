@@ -84,8 +84,6 @@ extension Managed where Self: NSManagedObject {
     }
     
     public static func fetch(in context: NSManagedObjectContext, configurationBlock: (NSFetchRequest<Self>) -> () = { _ in }) -> [Self] {
-        print("Self: \(Self.debugDescription())")
-        print("entityName: \(Self.entityName)")
         let request = NSFetchRequest<Self>(entityName: Self.entityName)
         configurationBlock(request)
         return try! context.fetch(request)
