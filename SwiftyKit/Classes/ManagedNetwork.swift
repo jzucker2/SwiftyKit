@@ -111,12 +111,12 @@ extension Network {
         let request = try ManagedCodableRequest<U>(type: .GET, object: object)
         try executeCodableTask(with: request, and: completion)
     }
-    public func POST<U: RemoteManaged>(_ object: U, body: Any? = nil, and completion: @escaping (HTTPURLResponse?, U?, Error?) -> (Void)) throws {
-        let request = try ManagedCodableRequest<U>(type: .POST, object: object, body: body)
+    public func POST<U: RemoteManaged>(_ object: U, and completion: @escaping (HTTPURLResponse?, U?, Error?) -> (Void)) throws {
+        let request = try ManagedCodableRequest<U>(type: .POST, object: object)
         try executeCodableTask(with: request, and: completion)
     }
-    public func PATCH<U: RemoteManaged>(_ object: U, body: Any? = nil, and completion: @escaping (HTTPURLResponse?, U?, Error?) -> (Void)) throws {
-        let request = try ManagedCodableRequest<U>(type: .PATCH, object: object, body: body)
+    public func PATCH<U: RemoteManaged>(_ object: U, and completion: @escaping (HTTPURLResponse?, U?, Error?) -> (Void)) throws {
+        let request = try ManagedCodableRequest<U>(type: .PATCH, object: object)
         try executeCodableTask(with: request, and: completion)
     }
     
