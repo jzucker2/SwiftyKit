@@ -42,13 +42,25 @@ open class CodableRequest<T: Remote>: JSONRequest {
 open class ManagedCodableRequest<U: RemoteManaged>: CodableRequest<U> {
     public required init(type: HTTPMethod = .GET, object: U, body: Any? = nil, headers: [String : String]? = nil, queryParameters: [String : String]? = nil) throws {
         var finalPath: String
+        var finalBody: Any? = nil
         switch type {
-        case .GET, .PATCH, .PUT, .DELETE:
+        case .GET, .PATCH, .PUT:
             finalPath = "\(U.service)/\(object.uniqueIdentifier)"
-        case .POST:
+            // due to NSURLSession, a GET must always have a nil body
+            if type == .GET {
+                finalBody = nil
+            } else {
+                finalBody = body ?? object // body overrides object passed in
+            }
+        case .POST, .DELETE:
             finalPath = "\(U.service)"
+            if type == .DELETE {
+                finalBody = nil
+            } else {
+                finalBody = body ?? object
+            }
         }
-        try super.init(type: type, headers: headers, body: body, path: finalPath, queryParameters: queryParameters)
+        try super.init(type: type, headers: headers, body: finalBody, path: finalPath, queryParameters: queryParameters)
     }
 }
 
