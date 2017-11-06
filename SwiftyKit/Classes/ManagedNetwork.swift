@@ -34,7 +34,8 @@ open class CodableRequest<T: Remote>: JSONRequest {
                 }
             }
         }
-        try super.init(type: type, headers: finalHeaders, body: finalBody, path: T.service, queryParameters: queryParameters)
+        let finalPath = path ?? T.service
+        try super.init(type: type, headers: finalHeaders, body: finalBody, path: finalPath, queryParameters: queryParameters)
     }
 }
 
