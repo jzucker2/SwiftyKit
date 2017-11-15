@@ -102,6 +102,10 @@ extension Network {
         let request = try CodableRequest<T>(type: .PATCH, body: body)
         try executeCodableTask(with: request, and: completion)
     }
+    public func DELETE<T: Remote>(_ object: T, and completion: @escaping (HTTPURLResponse?, T?, Error?) -> (Void)) throws {
+        let request = try CodableRequest<T>(type: .DELETE)
+        try executeCodableTask(with: request, and: completion)
+    }
 }
 
 
@@ -117,6 +121,10 @@ extension Network {
     }
     public func PATCH<U: RemoteManaged>(_ object: U, and completion: @escaping (HTTPURLResponse?, U?, Error?) -> (Void)) throws {
         let request = try ManagedCodableRequest<U>(type: .PATCH, object: object)
+        try executeCodableTask(with: request, and: completion)
+    }
+    public func DELETE<U: RemoteManaged>(_ object: U, and completion: @escaping (HTTPURLResponse?, U?, Error?) -> (Void)) throws {
+        let request = try ManagedCodableRequest<U>(type: .DELETE, object: object)
         try executeCodableTask(with: request, and: completion)
     }
     
