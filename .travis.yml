@@ -25,5 +25,5 @@ script:
   - echo $RUN_SCHEME
   - echo $RUN_DESTINATION
   - set -o pipefail
-  - xcodebuild test -workspace SwiftyKit.xcworkspace -scheme $RUN_SCHEME -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3.1' -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.0' | xcpretty
+  - xcodebuild test -workspace SwiftyKit.xcworkspace -scheme $RUN_SCHEME -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3.1' -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.0.1' -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.1' | xcpretty
   - pod lib lint
