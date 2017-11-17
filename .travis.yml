@@ -2,7 +2,7 @@
 # * http://www.objc.io/issue-6/travis-ci.html
 # * https://github.com/supermarin/xcpretty#usage
 
-osx_image: xcode9
+osx_image: xcode9.1
 language: objective-c
 
 cache:
@@ -19,10 +19,11 @@ matrix:
     - env: RUN_SCHEME="SwiftyKit-Example"
     - env: RUN_SCHEME="SwiftyKit_Tests"
     - env: RUN_SCHEME="SwiftyKit_Networking_Tests"
+    - env: RUN_SCHEME="SwiftyKit_CoreData_Tests"
 
 script:
   - echo $RUN_SCHEME
   - echo $RUN_DESTINATION
   - set -o pipefail
-  - xcodebuild test -workspace SwiftyKit.xcworkspace -scheme $RUN_SCHEME -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3.1' -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.0' | xcpretty
+  - xcodebuild test -workspace SwiftyKit.xcworkspace -scheme $RUN_SCHEME -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3.1' -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.0.1' -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.1' | xcpretty
   - pod lib lint

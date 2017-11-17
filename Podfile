@@ -11,9 +11,17 @@ target 'SwiftyKit_Example' do
     inherit! :search_paths
     pod 'SwiftyKit', :path => '.'
   end
+  target 'SwiftyKit_ExampleUITests' do
+    inherit! :search_paths
+    pod 'SwiftyKit', :path => '.'
+  end
   target 'SwiftyKit_Networking_Tests' do
       inherit! :search_paths
       pod 'DVR'
       pod 'SwiftyKit', :path => '.'      
+  end
+  target 'SwiftyKit_CoreData_Tests' do
+      inherit! :search_paths
+      pod 'SwiftyKit', :path => '.'
   end
 end
